@@ -1,5 +1,5 @@
 import { B, TealBtn, GhostBtn } from "../brand";
-import { Navbar, Footer, DemoFormSection, ImgPlaceholderDark, ImgPlaceholder, useInView, IconCheck, IconArrowRight } from "../components/shared";
+import { Navbar, Footer, DemoFormSection, useInView, IconCheck, IconArrowRight } from "../components/shared";
 
 function MockupOfflinePOS() {
   return (
@@ -148,6 +148,71 @@ function SurviveField() {
   );
 }
 
+function MockupWalkUpSale() {
+  const items = [
+    { label: "Adult GA (x2)", price: "$44.00" },
+    { label: "Child 3–17 (x1)", price: "$14.00" },
+  ];
+  return (
+    <div className="relative max-w-xs mx-auto lg:mx-0 lg:ml-auto">
+      <div className="rounded-2xl overflow-hidden shadow-[0_24px_48px_-12px_rgba(13,21,32,0.45)] border"
+        style={{ backgroundColor: "#0D1520", borderColor: "#1A2840" }}>
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-3.5 border-b" style={{ borderColor: "#1A2840" }}>
+          <div>
+            <p className="text-xs font-semibold text-white">New Sale</p>
+            <p className="text-[10px]" style={{ color: "#4E6490" }}>Gate 2 · Till #1</p>
+          </div>
+          <span className="flex items-center gap-1.5 text-[10px] font-semibold px-2 py-1 rounded-full"
+            style={{ backgroundColor: "rgba(32,153,145,0.15)", color: B.tealLight }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.tealLight }}/>
+            OFFLINE
+          </span>
+        </div>
+        {/* Items */}
+        <div className="px-5 pt-4 pb-2 space-y-2">
+          {items.map(({ label, price }) => (
+            <div key={label} className="flex items-center justify-between">
+              <span className="text-xs" style={{ color: "#94A3B8" }}>{label}</span>
+              <span className="text-xs font-semibold text-white">{price}</span>
+            </div>
+          ))}
+          <div className="border-t pt-2 mt-1 flex items-center justify-between" style={{ borderColor: "#1A2840" }}>
+            <span className="text-sm font-bold text-white">Total</span>
+            <span className="text-sm font-bold" style={{ color: B.tealLight }}>$58.00</span>
+          </div>
+        </div>
+        {/* Payment methods */}
+        <div className="px-5 pt-3 pb-4">
+          <p className="text-[10px] font-semibold uppercase tracking-widest mb-2.5" style={{ color: "#4E6490" }}>Payment Method</p>
+          <div className="grid grid-cols-2 gap-2 mb-4">
+            {[
+              { label: "Cash", active: false },
+              { label: "Card", active: true },
+            ].map(({ label, active }) => (
+              <button key={label} className="rounded-lg py-2.5 text-xs font-semibold transition-all"
+                style={{
+                  backgroundColor: active ? B.teal : "#111D2E",
+                  color: active ? "#fff" : "#4E6490",
+                  border: `1px solid ${active ? B.teal : "#1A2840"}`,
+                }}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <button className="w-full rounded-xl py-3 text-sm font-bold text-white"
+            style={{ backgroundColor: B.teal }}>
+            Process Sale →
+          </button>
+          <p className="text-center text-[10px] mt-2.5" style={{ color: "#4E6490" }}>
+            Syncs automatically when connection restores
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function WalkUpSales() {
   const [ref, inView] = useInView();
   return (
@@ -172,7 +237,7 @@ function WalkUpSales() {
             </div>
           </div>
           <div className={`transition-all duration-500 delay-100 ${inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"}`}>
-            <ImgPlaceholder label="[ IMG-02: Walk-up sale being processed on Evinra POS — cash/card screen ]" className="aspect-[4/3]"/>
+            <MockupWalkUpSale />
           </div>
         </div>
       </div>
