@@ -94,12 +94,11 @@ const HARDWARE_GRID = [
 ];
 
 const REQUIREMENTS = [
-  { label: "iOS", value: "13.0 or higher" },
-  { label: "Android", value: "9.0 (Pie) or higher" },
-  { label: "Storage", value: "Minimum 2 GB free for offline ticket cache" },
-  { label: "Camera", value: "Auto-focus with 1080p or higher resolution" },
-  { label: "Bluetooth", value: "4.0+ for peripheral pairing" },
-  { label: "WiFi", value: "802.11ac (WiFi 5) for local network sync" },
+  { label: "Operating System", value: "iOS 15+ or Android 10+" },
+  { label: "Memory", value: "4 GB RAM minimum" },
+  { label: "Storage", value: "64 GB internal storage" },
+  { label: "Connectivity", value: "Wi-Fi and Bluetooth enabled" },
+  { label: "Camera", value: "Autofocus (mandatory for rapid QR validation)" },
 ];
 
 function MockupDeviceEcosystem() {
@@ -170,11 +169,11 @@ function Hero() {
             Hardware Requirements
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.07] tracking-tight mb-6">
-            The Gear That Keeps<br/>
-            <span style={{ color: B.teal }}>Your Gates Moving.</span>
+            Bring Your Own Device.<br/>
+            <span style={{ color: B.teal }}>Or Let Us Bring the Arsenal.</span>
           </h1>
           <p className="text-[15px] leading-relaxed mb-8" style={{ color: B.mutedLight }}>
-            Evinra runs on hardware you can buy anywhere — from an iPad you already own to enterprise Zebra scanners built for the most demanding gate environments. Every device on this list has been field-tested under load.
+            Evinra's offline-first architecture runs flawlessly on the hardware you already trust. Deploy your own iOS and Android gear, or scale up instantly with our rugged, pre-configured custom kits.
           </p>
           <div className="flex flex-wrap gap-3">
             <TealBtn href="/request-a-demo">Talk to a Field Technician <IconArrowRight className="w-4 h-4"/></TealBtn>
@@ -187,6 +186,38 @@ function Hero() {
   );
 }
 
+function POSIntegration() {
+  const [ref, inView] = useInView();
+  const connections = [
+    { label: "Bluetooth", desc: "For mobile, untethered vendor setups." },
+    { label: "USB", desc: "For stationary, hardwired box office terminals." },
+    { label: "Ethernet/LAN & Wi-Fi", desc: "For high-volume, multi-terminal concession tents." },
+  ];
+  return (
+    <section ref={ref} style={{ backgroundColor: B.bg }}>
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="max-w-xl mb-10">
+          <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>Seamless Physical POS Integration.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Evinra bridges the gap between your digital ticketing and physical walk-up sales. Our point-of-sale ecosystem connects instantly to your physical cash drawers and receipt printers.</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5 max-w-3xl">
+          {connections.map(({ label, desc }, i) => (
+            <div key={label}
+              className={`rounded-xl p-6 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+              style={{ backgroundColor: "#fff", borderColor: "#E2E8F0", transitionDelay: `${i * 70}ms` }}>
+              <div className="w-7 h-7 rounded-md flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(32,153,145,0.1)", color: B.teal }}>
+                <IconNetwork />
+              </div>
+              <p className="text-sm font-semibold mb-1.5" style={{ color: B.text }}>{label}</p>
+              <p className="text-xs leading-relaxed" style={{ color: B.muted }}>{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function OfflineBubble() {
   const [ref, inView] = useInView();
   return (
@@ -194,23 +225,19 @@ function OfflineBubble() {
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className={`transition-all duration-500 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}>
-            <h2 className="text-3xl font-bold text-white mb-5">Every Device Creates Its Own Offline Bubble.</h2>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: B.mutedLight }}>
-              Before your gates open, every Evinra device downloads a complete local copy of the ticket database, staff permissions, and pricing configuration. When cellular service drops — and it will drop — the device doesn't pause to reconnect. It keeps scanning from local storage.
-            </p>
+            <h2 className="text-3xl font-bold text-white mb-5">The Offline Bubble.</h2>
             <p className="text-sm leading-relaxed mb-6" style={{ color: B.mutedLight }}>
-              Anti-fraud sync between gates happens over a closed local WiFi network you bring to the field. A ticket scanned at Gate 1 is invalidated at Gates 2 through 10 in real time, with zero internet dependency.
+              To maintain our 99.9% uptime target in dead cell zones, we recommend a specific local deployment strategy to keep your gates moving.
             </p>
             <ul className="space-y-3">
               {[
-                "Device database sync before gates open",
-                "Closed-loop LAN for multi-gate fraud prevention",
-                "Background internet sync when connectivity returns",
-                "35+ scans per minute maintained offline",
+                "Dedicated Local Network: Deploy a secure, local 5 GHz Wi-Fi network strictly dedicated to your POS and scanning hardware.",
+                "Redundant Uplink: Maintain a backup LTE or 5G internet connection for cloud synchronization.",
+                "Offline-First Sync: If the uplink drops, your local 5 GHz network ensures devices continue validating cached tickets instantly. Background sync pushes the data to the cloud the millisecond the main connection returns.",
               ].map(item => (
-                <li key={item} className="flex items-center gap-2 text-sm text-white">
-                  <IconCheck className="w-4 h-4 shrink-0" style={{ color: B.teal }}/>
-                  {item}
+                <li key={item} className="flex items-start gap-2 text-sm text-white">
+                  <IconCheck className="w-4 h-4 shrink-0 mt-0.5" style={{ color: B.teal }}/>
+                  <span style={{ color: B.mutedLight }}>{item}</span>
                 </li>
               ))}
             </ul>
@@ -220,10 +247,10 @@ function OfflineBubble() {
             {[
               { step: "Pre-Event", label: "All devices download complete ticket DB via WiFi or LTE" },
               { step: "Gates Open", label: "Devices scan locally — no cloud dependency" },
-              { step: "During Show", label: "LAN sync invalidates tickets across all gates in real time" },
+              { step: "During Show", label: "Local 5 GHz LAN invalidates tickets across all gates in real time" },
               { step: "Connectivity", label: "Background sync to cloud runs when internet is available" },
               { step: "Close", label: "Full settlement snapshot pushed on gate closure" },
-            ].map(({ step, label }, i) => (
+            ].map(({ step, label }) => (
               <div key={step} className="flex gap-4 py-3 border-b last:border-0" style={{ borderColor: `${B.navy}60` }}>
                 <span className="text-xs font-bold w-20 shrink-0 pt-0.5" style={{ color: B.teal }}>{step}</span>
                 <span className="text-xs leading-snug" style={{ color: B.mutedLight }}>{label}</span>
@@ -242,8 +269,8 @@ function HardwareGridSection() {
     <section ref={ref} style={{ backgroundColor: B.bg }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-xl mb-12">
-          <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>Field-Tested. Operator-Approved.</h2>
-          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Every device below has passed our 35+ scans-per-minute threshold under real field conditions. Not a spec sheet — a field report.</p>
+          <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>Field-Tested &amp; Approved.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>We push gear to the absolute limit to guarantee our 35+ scans-per-minute benchmark. Here is the hardware we actively test, trust, and deploy in the mud.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {HARDWARE_GRID.map(({ category, Icon, items }, i) => (
@@ -278,8 +305,8 @@ function MinRequirements() {
     <section id="min-requirements" ref={ref} style={{ backgroundColor: B.navyDarkest }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-xl mb-10">
-          <h2 className="text-3xl font-bold text-white mb-3">Minimum Device Requirements.</h2>
-          <p className="text-sm" style={{ color: B.muted }}>Evinra runs on modern consumer hardware. No proprietary devices required.</p>
+          <h2 className="text-3xl font-bold text-white mb-3">The Baseline Specs.</h2>
+          <p className="text-sm" style={{ color: B.muted }}>If your current tech meets these minimums, you can download the app and start scanning today. No mandatory hardware upgrades or proprietary contracts required.</p>
         </div>
         <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
           {REQUIREMENTS.map(({ label, value }, i) => (
@@ -304,11 +331,8 @@ function WhiteGloveSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className={`transition-all duration-500 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}>
             <h2 className="text-3xl font-bold mb-5" style={{ color: B.text }}>White-Glove Hardware Delivery.</h2>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: B.muted }}>
-              If you're setting up Evinra for the first time or expanding into enterprise Zebra hardware, we don't hand you a box and a manual. We pre-configure every device — apps installed, credentials loaded, Evinra activated — and ship it to your venue address.
-            </p>
             <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>
-              Your gate crew opens the case, powers on, and scans. That's the full setup process.
+              Scaling up for a massive multi-day festival? Stop sourcing your own iPads. We offer fully managed hardware rentals for enterprise deployments.
             </p>
             <ul className="space-y-3">
               {[
@@ -354,11 +378,12 @@ export default function Hardware() {
       <Navbar/>
       <main>
         <Hero/>
-        <OfflineBubble/>
-        <HardwareGridSection/>
         <MinRequirements/>
+        <HardwareGridSection/>
+        <POSIntegration/>
+        <OfflineBubble/>
         <WhiteGloveSection/>
-        <DemoFormSection title="Not Sure What Hardware You Need?" subtitle="Tell us your gate count, venue type, and current setup. We'll give you a specific hardware recommendation with no upsell pressure — just the right gear for your operation." btnLabel="Get a Hardware Recommendation →"/>
+        <DemoFormSection title="Need to Check Your Gear?" subtitle="Send us a breakdown of your current hardware inventory. Our field technicians will tell you exactly what works, what needs an upgrade, and how to build a bulletproof network architecture for your next event." btnLabel="Speak to a Field Technician"/>
       </main>
       <Footer/>
     </div>
