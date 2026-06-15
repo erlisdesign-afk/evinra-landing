@@ -14,6 +14,11 @@
   --color-muted:        #5A6B8A;
 
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Custom easing curves (Emil Kowalski) */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -29,9 +34,62 @@ body {
 
 #root { width: 100%; }
 
+/* ─── DOT GRID TEXTURE (Apollo-style dark section background) ─── */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* ─── BUTTON ACTIVE STATE (Emil principle: tactile press) ─── */
+.btn-teal {
+  transition: background-color 150ms ease, transform 120ms var(--ease-out-expo);
+}
+.btn-teal:active {
+  transform: scale(0.97) translateY(1px);
+}
+
+/* ─── MARQUEE (kinetic horizontal scroll for social proof) ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ─── REVEAL ANIMATIONS ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.5s var(--ease-out-expo) forwards;
+}
+
+/* ─── SPOTLIGHT CARD BORDER (cursor glow effect) ─── */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 120px at var(--x, 50%) var(--y, 50%), rgba(32,153,145,0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+.spotlight-card:hover::before { opacity: 1; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  .marquee-track { animation: none; }
 }

@@ -263,19 +263,85 @@ function Navbar() {
 /* ─── SECTION 1: HERO ─── */
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: B.navyDarkest }}>
-      {/* Brand glow */}
+    <section className="relative min-h-[100dvh] flex items-center overflow-hidden dot-grid" style={{ backgroundColor: B.navyDarkest }}>
+      {/* Deep navy radial base */}
       <div aria-hidden className="absolute inset-0 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse 65% 55% at 75% 50%, ${B.navyDeep} 0%, transparent 70%)` }}/>
-      {/* Teal subtle glow bottom-left */}
-      <div aria-hidden className="absolute bottom-0 left-0 w-96 h-96 pointer-events-none"
-        style={{ background: `radial-gradient(circle, rgba(32,153,145,0.06) 0%, transparent 70%)` }}/>
+        style={{ background: `radial-gradient(ellipse 70% 60% at 72% 50%, ${B.navyDeep} 0%, transparent 68%)` }}/>
+      {/* Teal glow — bottom-left anchor */}
+      <div aria-hidden className="absolute -bottom-24 -left-24 w-[480px] h-[480px] pointer-events-none rounded-full"
+        style={{ background: `radial-gradient(circle, rgba(32,153,145,0.09) 0%, transparent 65%)`, filter: "blur(40px)" }}/>
+      {/* Teal glow — right center */}
+      <div aria-hidden className="absolute right-0 top-1/3 w-80 h-80 pointer-events-none"
+        style={{ background: `radial-gradient(circle, rgba(32,153,145,0.07) 0%, transparent 70%)`, filter: "blur(60px)" }}/>
 
-      {/* Right image area */}
-      <div aria-hidden className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:flex items-center justify-center pr-8">
-        <div className="w-[88%] h-[70%] rounded-2xl flex items-center justify-center text-xs font-mono border"
-          style={{ backgroundColor: B.navyDeep, borderColor: `${B.navy}60`, color: B.muted }}>
-          [ Platform mockup on device ]
+      {/* Right panel — Product UI mockup */}
+      <div aria-hidden className="absolute right-0 top-0 bottom-0 w-[50%] hidden lg:flex items-center justify-center pr-10 pointer-events-none">
+        <div className="relative w-[88%]">
+          {/* Main dashboard card */}
+          <div className="rounded-2xl border overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]"
+            style={{ backgroundColor: "#111D2E", borderColor: `${B.navy}70` }}>
+            {/* Window chrome */}
+            <div className="flex items-center gap-1.5 px-4 py-3 border-b" style={{ borderColor: `${B.navy}60`, backgroundColor: "#0D1520" }}>
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }}/>
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FEBC2E" }}/>
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#28C840" }}/>
+              <span className="text-[11px] ml-3 font-mono" style={{ color: B.muted }}>Evinra — Live Operations</span>
+            </div>
+            <div className="p-5 space-y-4">
+              {/* Gate status grid */}
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: B.muted }}>Active Gates</p>
+                <div className="grid grid-cols-3 gap-1.5">
+                  {[["Gate 1","12 scans/m"],["Gate 2","38 scans/m"],["Gate 3","41 scans/m"],["Gate 4","29 scans/m"],["Gate 5","37 scans/m"],["Gate 6","—"]].map(([g, rate], i) => (
+                    <div key={g} className="rounded-lg px-2 py-2 border" style={{ backgroundColor: "#0D1520", borderColor: i < 5 ? `rgba(32,153,145,0.22)` : `${B.navy}40` }}>
+                      <div className="flex items-center gap-1 mb-1">
+                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: i < 5 ? "#22C55E" : "#4B5563" }}/>
+                        <span className="text-[9px] font-medium" style={{ color: B.mutedLight }}>{g}</span>
+                      </div>
+                      <span className="text-[10px] font-mono font-semibold" style={{ color: i < 5 ? B.tealLight : B.muted }}>{rate}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Revenue + scan stats */}
+              <div className="grid grid-cols-2 gap-2">
+                <div className="rounded-xl p-3.5 border" style={{ backgroundColor: "#0D1520", borderColor: `${B.navy}50` }}>
+                  <p className="text-[10px] mb-1 font-medium" style={{ color: B.muted }}>Revenue Today</p>
+                  <p className="text-xl font-bold text-white font-mono">$24,830</p>
+                  <p className="text-[10px] mt-0.5" style={{ color: "#22C55E" }}>+14.2% vs yesterday</p>
+                </div>
+                <div className="rounded-xl p-3.5 border" style={{ backgroundColor: "#0D1520", borderColor: `rgba(32,153,145,0.25)` }}>
+                  <p className="text-[10px] mb-1 font-medium" style={{ color: B.muted }}>Gate Velocity</p>
+                  <p className="text-xl font-bold font-mono" style={{ color: B.teal }}>35+</p>
+                  <p className="text-[10px] mt-0.5" style={{ color: B.mutedLight }}>scans/min · offline</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating card: vendor settlement */}
+          <div className="absolute -bottom-5 -right-5 rounded-xl p-3.5 border shadow-xl"
+            style={{ backgroundColor: B.navyDarkest, borderColor: `rgba(32,153,145,0.35)`, boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}>
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "rgba(32,153,145,0.15)" }}>
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5}><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </div>
+              <div>
+                <p className="text-[11px] font-semibold text-white">3 vendors auto-settled</p>
+                <p className="text-[10px]" style={{ color: B.muted }}>$6,140 in commissions calculated</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating card: offline badge */}
+          <div className="absolute -top-5 -left-5 rounded-xl px-3 py-2 border shadow-xl"
+            style={{ backgroundColor: B.navyDarkest, borderColor: `${B.navy}70`, boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}>
+            <div className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: B.teal }}/>
+              <span className="text-[11px] font-semibold text-white">100% Offline Mode</span>
+            </div>
+            <p className="text-[10px] mt-0.5" style={{ color: B.muted }}>0 bars · 0 issues</p>
+          </div>
         </div>
         <div aria-hidden className="absolute inset-0"
           style={{ background: `linear-gradient(to right, ${B.navyDarkest} 0%, transparent 45%)` }}/>
@@ -300,12 +366,16 @@ function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3 mb-5">
-            <TealBtn href="/request-a-demo">
+            <a href="/request-a-demo"
+              className="btn-teal inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-md text-white cursor-pointer"
+              style={{ backgroundColor: B.teal }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = B.tealDark}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = B.teal}>
               Request a Demo <IconArrowRight className="w-4 h-4"/>
-            </TealBtn>
+            </a>
             <a href="#solution"
               className="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-md border transition-colors duration-150 cursor-pointer"
-              style={{ borderColor: "rgba(255,255,255,0.18)", color: "#CBD5E1" }}
+              style={{ borderColor: "rgba(255,255,255,0.18)", color: "#CBD5E1", transition: "border-color 150ms, color 150ms, transform 120ms var(--ease-out-expo)" }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)"; e.currentTarget.style.color = "#fff"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)"; e.currentTarget.style.color = "#CBD5E1"; }}>
               See How It Works →
@@ -321,24 +391,29 @@ function Hero() {
 /* ─── SECTION 2: STATS ─── */
 const STATS = [
   { value: "Up to 50%", label: "Lower Ticketing Fees" },
-  { value: "99.9%",     label: "Uptime Target Infrastructure" },
-  { value: "35+",       label: "Scans Per Minute, Per Device" },
+  { value: "99.9%",     label: "Uptime Target" },
+  { value: "35+",       label: "Scans Per Min, Per Device" },
   { value: "100,000+",  label: "Attendee Capacity" },
 ];
 
 function Stats() {
   const [ref, inView] = useInView();
   return (
-    <section ref={ref} style={{ backgroundColor: B.navyDeep }}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0"
-          style={{ borderColor: `${B.navy}60` }}>
+    <section ref={ref} className="border-y" style={{ backgroundColor: B.navyDeep, borderColor: `${B.navy}80` }}>
+      <div className="max-w-7xl mx-auto px-6 py-0">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
           {STATS.map((s, i) => (
             <div key={s.label}
-              className={`text-center px-6 py-10 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ transitionDelay: `${i * 80}ms` }}>
-              <p className="text-3xl lg:text-4xl font-bold mb-1.5 text-white">{s.value}</p>
-              <p className="text-xs font-medium tracking-wide" style={{ color: B.muted }}>{s.label}</p>
+              className={`px-6 py-10 lg:py-12 transition-all duration-500 ${i > 0 ? "border-l" : ""} ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
+              style={{
+                borderColor: `${B.navy}70`,
+                transitionDelay: `${i * 90}ms`,
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(16px)",
+                transition: `opacity 0.5s var(--ease-out-expo) ${i * 90}ms, transform 0.5s var(--ease-out-expo) ${i * 90}ms`,
+              }}>
+              <p className="text-4xl lg:text-5xl font-bold tracking-tight leading-none mb-2" style={{ color: B.teal }}>{s.value}</p>
+              <p className="text-xs font-medium" style={{ color: B.mutedLight }}>{s.label}</p>
             </div>
           ))}
         </div>
@@ -371,24 +446,37 @@ function Enemy() {
   return (
     <section ref={ref} className="border-b" style={{ backgroundColor: B.bg, borderColor: "#E2E8F0" }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="max-w-2xl mb-12">
+        <div className="max-w-2xl mb-14">
           <h2 className="text-3xl lg:text-4xl font-bold leading-tight" style={{ color: B.text }}>
             The "Industry Standard" is Costing You Time, Money, and Your Sanity.
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+
+        {/* Numbered horizontal list — not 3-equal-cards */}
+        <div className="space-y-0">
           {PAIN_POINTS.map(({ Icon, title, body }, i) => (
             <div key={title}
-              className={`transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                style={{ backgroundColor: B.navy }}>
-                <Icon className="w-5 h-5 text-white"/>
+              className="grid lg:grid-cols-[80px_280px_1fr] gap-6 lg:gap-10 items-start py-10 border-t"
+              style={{
+                borderColor: "#E2E8F0",
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 0.5s var(--ease-out-expo) ${i * 120}ms, transform 0.5s var(--ease-out-expo) ${i * 120}ms`,
+              }}>
+              {/* Number + icon */}
+              <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-3">
+                <span className="text-4xl font-bold tabular-nums leading-none" style={{ color: "#E2E8F0" }}>0{i + 1}</span>
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `rgba(32,153,145,0.1)` }}>
+                  <Icon className="w-4 h-4" style={{ color: B.teal }}/>
+                </div>
               </div>
-              <h3 className="text-base font-semibold mb-2" style={{ color: B.text }}>{title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: B.muted }}>{body}</p>
+              {/* Title */}
+              <h3 className="text-lg font-semibold leading-snug pt-1" style={{ color: B.text }}>{title}</h3>
+              {/* Body */}
+              <p className="text-sm leading-relaxed" style={{ color: B.muted, maxWidth: "56ch" }}>{body}</p>
             </div>
           ))}
+          <div className="border-t" style={{ borderColor: "#E2E8F0" }}/>
         </div>
       </div>
     </section>
@@ -426,7 +514,6 @@ function Solution() {
 
         <div className={`grid lg:grid-cols-2 gap-12 items-center mb-16 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div>
-            <span className="text-xs font-semibold uppercase tracking-widest mb-3 block" style={{ color: B.teal }}>White-Label Ticketing</span>
             <h3 className="text-2xl font-bold mb-4" style={{ color: B.text }}>White-Label Ticketing That Protects Your Margins</h3>
             <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>
               Every ticket sold on a third-party platform is a customer you don't own. Evinra flips this — your checkout lives on your domain, carries your brand, and builds your audience.
@@ -448,7 +535,6 @@ function Solution() {
         <div className={`grid lg:grid-cols-2 gap-12 items-center transition-all duration-500 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="order-2 lg:order-1">{placeholder("[ Mockup: Offline POS on iPad/Zebra ]")}</div>
           <div className="order-1 lg:order-2">
-            <span className="text-xs font-semibold uppercase tracking-widest mb-3 block" style={{ color: B.teal }}>Offline Event POS</span>
             <h3 className="text-2xl font-bold mb-4" style={{ color: B.text }}>Native Offline POS Built for the Field</h3>
             <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>
               Standard POS apps were designed for coffee shops, not muddy fields with 10,000 attendees and zero cell signal. Evinra runs entirely on local device caching. The internet can go down. Your gates keep moving.
@@ -498,7 +584,7 @@ function ModuleCard({ Icon, title, body, delay, inView, direction }) {
 function Lifecycle() {
   const [ref, inView] = useInView();
   return (
-    <section ref={ref} style={{ backgroundColor: B.navyDarkest }}>
+    <section ref={ref} className="dot-grid" style={{ backgroundColor: B.navyDarkest }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-2xl mb-14">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
@@ -581,7 +667,7 @@ function FounderNote() {
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-14 items-start">
           <div className={`transition-all duration-600 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <span className="text-5xl font-serif leading-none" style={{ color: B.teal }}>"</span>
+            <span className="text-6xl font-bold leading-none select-none" style={{ color: B.teal, fontVariantNumeric: "normal", lineHeight: 0.8 }}>"</span>
             <h2 className="text-2xl lg:text-3xl font-bold text-white leading-snug -mt-2 mb-6">
               I was paying them to hold my own money hostage.
             </h2>
@@ -840,8 +926,7 @@ function Footer() {
 /* ─── ROOT ─── */
 export default function EvinraHomepage() {
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');`}</style>
+    <div>
       <Navbar />
       <main>
         <Hero />
