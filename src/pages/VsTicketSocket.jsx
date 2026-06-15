@@ -1,4 +1,4 @@
-import { B, TealBtn } from "../brand";
+import { B, TealBtn, GhostBtn } from "../brand";
 import { Navbar, Footer, DemoFormSection, useInView, IconCheck, IconArrowRight } from "../components/shared";
 
 function MockupCoverage() {
@@ -83,13 +83,16 @@ function Hero() {
             Evinra vs. TicketSocket
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.07] tracking-tight mb-6">
-            TicketSocket Sells the Ticket.<br/>
-            <span style={{ color: B.teal }}>Evinra Runs the Show.</span>
+            Looking for a Better TicketSocket Alternative?<br/>
+            <span style={{ color: B.teal }}>Meet Evinra.</span>
           </h1>
           <p className="text-[15px] leading-relaxed mb-8" style={{ color: B.mutedLight }}>
-            TicketSocket is a powerful ticketing engine. But when the gates open and the field gets physical, you need more than a ticketing app. You need a complete operational system.
+            You don't have to sacrifice physical reliability for brand control. Discover why high-volume independent promoters, fairs, and touring productions are choosing Evinra for transparent pricing, native offline POS functionality, and complete event lifecycle management.
           </p>
-          <TealBtn href="/request-a-demo">See Evinra in Action <IconArrowRight className="w-4 h-4"/></TealBtn>
+          <div className="flex flex-wrap gap-3">
+            <TealBtn href="/request-a-demo">See Evinra in Action <IconArrowRight className="w-4 h-4"/></TealBtn>
+            <GhostBtn href="#comparison">See the Comparison Chart →</GhostBtn>
+          </div>
         </div>
         <MockupCoverage />
       </div>
@@ -100,7 +103,7 @@ function Hero() {
 function ComparisonTable() {
   const [ref, inView] = useInView();
   return (
-    <section ref={ref} style={{ backgroundColor: B.bg }}>
+    <section id="comparison" ref={ref} style={{ backgroundColor: B.bg }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-xl mb-10">
           <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>Feature by Feature.</h2>
