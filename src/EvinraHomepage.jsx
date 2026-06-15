@@ -483,6 +483,151 @@ function Enemy() {
   );
 }
 
+/* ─── MOCKUP: White-label checkout on device ─── */
+function MockupCheckout() {
+  return (
+    <div className="rounded-2xl border overflow-hidden shadow-[0_24px_48px_-12px_rgba(13,21,32,0.14)]"
+      style={{ backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
+      {/* Browser chrome */}
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b" style={{ backgroundColor: "#F8FAFC", borderColor: "#E2E8F0" }}>
+        <span className="w-2.5 h-2.5 rounded-full bg-red-400/80"/>
+        <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"/>
+        <span className="w-2.5 h-2.5 rounded-full bg-green-400/80"/>
+        <div className="flex-1 mx-3 rounded-md px-3 py-1 text-[11px] font-mono" style={{ backgroundColor: "#EEF2F7", color: "#5A6B8A" }}>
+          tickets.sunstatefairs.com/checkout
+        </div>
+      </div>
+      <div className="p-5">
+        {/* Brand header */}
+        <div className="flex items-center gap-2 mb-5 pb-4 border-b" style={{ borderColor: "#EEF2F7" }}>
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ backgroundColor: B.teal }}>
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth={2}><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3z" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+          <span className="text-sm font-bold" style={{ color: B.text }}>Sunstate Fairs</span>
+          <span className="ml-auto text-[10px] font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(32,153,145,0.1)", color: B.teal }}>
+            Secure Checkout
+          </span>
+        </div>
+        {/* Event info */}
+        <div className="mb-4">
+          <p className="text-[11px] mb-0.5" style={{ color: B.muted }}>Southeast Regional Fair · June 14–22, 2026</p>
+          <p className="text-sm font-semibold" style={{ color: B.text }}>Select Ticket Type</p>
+        </div>
+        {/* Ticket options */}
+        <div className="space-y-2 mb-5">
+          {[
+            { type: "Adult (18+)", price: "$22.00", selected: true },
+            { type: "Child (3–17)", price: "$14.00", selected: false },
+            { type: "VIP Pass", price: "$55.00", selected: false },
+          ].map(({ type, price, selected }) => (
+            <div key={type}
+              className="flex items-center justify-between rounded-lg px-3 py-2.5 border cursor-pointer"
+              style={{ borderColor: selected ? B.teal : "#E2E8F0", backgroundColor: selected ? "rgba(32,153,145,0.05)" : "#fff" }}>
+              <div className="flex items-center gap-2.5">
+                <span className="w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center shrink-0"
+                  style={{ borderColor: selected ? B.teal : "#CBD5E1" }}>
+                  {selected && <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.teal }}/>}
+                </span>
+                <span className="text-xs font-medium" style={{ color: B.text }}>{type}</span>
+              </div>
+              <span className="text-xs font-bold" style={{ color: selected ? B.teal : B.muted }}>{price}</span>
+            </div>
+          ))}
+        </div>
+        {/* Qty row */}
+        <div className="flex items-center justify-between mb-4 text-xs" style={{ color: B.muted }}>
+          <span>2 × Adult</span>
+          <span className="font-bold text-sm" style={{ color: B.text }}>$44.00</span>
+        </div>
+        {/* CTA */}
+        <div className="w-full py-2.5 rounded-md text-xs font-semibold text-white text-center mb-3"
+          style={{ backgroundColor: B.teal }}>
+          Complete Purchase →
+        </div>
+        <p className="text-center text-[10px]" style={{ color: B.mutedLight }}>
+          Powered by <span style={{ color: B.teal }}>Evinra</span> · 2.9% + $0.30 per ticket
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ─── MOCKUP: Offline POS on iPad ─── */
+function MockupOfflinePOS() {
+  return (
+    <div className="relative">
+      {/* iPad frame */}
+      <div className="rounded-[2.5rem] border-[7px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(13,21,32,0.4)]"
+        style={{ backgroundColor: "#0D1520", borderColor: "#1A2840" }}>
+        {/* Status bar */}
+        <div className="flex items-center justify-between px-5 pt-2.5 pb-1.5" style={{ backgroundColor: "#0D1520" }}>
+          <span className="text-[10px] font-semibold font-mono" style={{ color: "#4E6490" }}>9:41</span>
+          <div className="w-14 h-3.5 rounded-full" style={{ backgroundColor: "#1A2840" }}/>
+          <div className="flex items-center gap-1.5">
+            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth={2}>
+              <path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-[10px] font-semibold" style={{ color: "#22C55E" }}>87%</span>
+          </div>
+        </div>
+        {/* App shell */}
+        <div className="px-4 pb-5" style={{ backgroundColor: "#111D2E", minHeight: "320px" }}>
+          {/* Header */}
+          <div className="flex items-center justify-between mb-4 pt-1">
+            <span className="text-xs font-semibold text-white">Gate 2 · Evinra POS</span>
+            <span className="flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full"
+              style={{ backgroundColor: "rgba(32,153,145,0.15)", color: B.tealLight }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.tealLight, animation: "pulse 2s infinite" }}/>
+              OFFLINE
+            </span>
+          </div>
+          {/* Scan zone */}
+          <div className="rounded-xl border-2 border-dashed flex flex-col items-center justify-center py-7 mb-4"
+            style={{ borderColor: "rgba(32,153,145,0.3)", backgroundColor: "rgba(32,153,145,0.03)" }}>
+            <svg className="w-9 h-9 mb-2.5" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={1.5}>
+              <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" strokeLinecap="round"/>
+              <line x1="7" y1="12" x2="17" y2="12" stroke={B.teal} strokeWidth={2.5} strokeLinecap="round"/>
+            </svg>
+            <p className="text-xs font-semibold" style={{ color: B.tealLight }}>Ready to Scan</p>
+            <p className="text-[10px] mt-0.5" style={{ color: B.muted }}>Camera or handheld scanner</p>
+          </div>
+          {/* Recent scans list */}
+          <p className="text-[9px] font-semibold uppercase tracking-widest mb-2" style={{ color: B.muted }}>Recent</p>
+          <div className="space-y-1.5">
+            {[
+              { id: "#TK-8821", type: "Adult GA", time: "4s ago" },
+              { id: "#TK-8820", type: "Adult GA", time: "9s ago" },
+              { id: "#TK-8819", type: "Child 3–17", time: "23s ago" },
+            ].map(({ id, type, time }) => (
+              <div key={id} className="flex items-center justify-between rounded-lg px-3 py-2"
+                style={{ backgroundColor: "#0D1520" }}>
+                <div className="flex items-center gap-2.5">
+                  <span className="w-4.5 h-4.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: "rgba(34,197,94,0.15)" }}>
+                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth={2.5}><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <div>
+                    <p className="text-[11px] font-mono font-semibold text-white">{id}</p>
+                    <p className="text-[9px]" style={{ color: B.muted }}>{type}</p>
+                  </div>
+                </div>
+                <span className="text-[9px]" style={{ color: B.muted }}>{time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Floating offline counter badge */}
+      <div className="absolute -top-4 -right-4 rounded-xl px-3.5 py-2.5 border shadow-xl z-10"
+        style={{ backgroundColor: B.navyDarkest, borderColor: "rgba(32,153,145,0.4)", boxShadow: "0 8px 32px rgba(0,0,0,0.45)" }}>
+        <p className="text-[10px] font-medium mb-0.5" style={{ color: B.muted }}>Synced offline</p>
+        <p className="text-xl font-bold font-mono" style={{ color: B.teal }}>4,219</p>
+        <p className="text-[9px]" style={{ color: B.muted }}>tickets cached</p>
+      </div>
+    </div>
+  );
+}
+
 /* ─── SECTION 4: SOLUTION ─── */
 const CheckItem = ({ children }) => (
   <li className="flex items-start gap-3 text-sm" style={{ color: B.navy }}>
@@ -496,12 +641,6 @@ const CheckItem = ({ children }) => (
 
 function Solution() {
   const [ref, inView] = useInView();
-  const placeholder = (label) => (
-    <div className="rounded-xl aspect-[4/3] flex items-center justify-center border text-xs font-mono"
-      style={{ backgroundColor: B.bgSubtle, borderColor: "#E2E8F0", color: "#9BAAC0" }}>
-      {label}
-    </div>
-  );
   return (
     <section id="solution" ref={ref} className="border-b" style={{ backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
@@ -529,11 +668,11 @@ function Solution() {
               Explore White-Label Ticketing <IconArrowRight className="w-4 h-4"/>
             </a>
           </div>
-          {placeholder("[ Mockup: White-label checkout on device ]")}
+          <MockupCheckout />
         </div>
 
         <div className={`grid lg:grid-cols-2 gap-12 items-center transition-all duration-500 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="order-2 lg:order-1">{placeholder("[ Mockup: Offline POS on iPad/Zebra ]")}</div>
+          <div className="order-2 lg:order-1"><MockupOfflinePOS /></div>
           <div className="order-1 lg:order-2">
             <h3 className="text-2xl font-bold mb-4" style={{ color: B.text }}>Native Offline POS Built for the Field</h3>
             <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>

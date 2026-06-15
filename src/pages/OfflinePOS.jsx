@@ -1,6 +1,79 @@
 import { B, TealBtn, GhostBtn } from "../brand";
 import { Navbar, Footer, DemoFormSection, ImgPlaceholderDark, ImgPlaceholder, useInView, IconCheck, IconArrowRight } from "../components/shared";
 
+function MockupOfflinePOS() {
+  return (
+    <div className="relative">
+      <div className="rounded-[2.5rem] border-[7px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(13,21,32,0.5)]"
+        style={{ backgroundColor: "#0D1520", borderColor: "#1A2840" }}>
+        {/* Status bar */}
+        <div className="flex items-center justify-between px-5 pt-2.5 pb-1.5" style={{ backgroundColor: "#0D1520" }}>
+          <span className="text-[10px] font-semibold font-mono" style={{ color: "#4E6490" }}>9:41</span>
+          <div className="w-14 h-3.5 rounded-full" style={{ backgroundColor: "#1A2840" }}/>
+          <div className="flex items-center gap-1.5">
+            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth={2}>
+              <path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-[10px] font-semibold" style={{ color: "#22C55E" }}>87%</span>
+          </div>
+        </div>
+        {/* App shell */}
+        <div className="px-4 pb-6" style={{ backgroundColor: "#111D2E" }}>
+          <div className="flex items-center justify-between mb-4 pt-1">
+            <span className="text-xs font-semibold text-white">Gate 2 · Evinra POS</span>
+            <span className="flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full"
+              style={{ backgroundColor: "rgba(32,153,145,0.15)", color: B.tealLight }}>
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: B.tealLight }}/>
+              OFFLINE
+            </span>
+          </div>
+          {/* Scan zone */}
+          <div className="rounded-xl border-2 border-dashed flex flex-col items-center justify-center py-10 mb-4"
+            style={{ borderColor: "rgba(32,153,145,0.3)", backgroundColor: "rgba(32,153,145,0.03)" }}>
+            <svg className="w-12 h-12 mb-3" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={1.5}>
+              <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" strokeLinecap="round"/>
+              <line x1="7" y1="12" x2="17" y2="12" stroke={B.teal} strokeWidth={2.5} strokeLinecap="round"/>
+            </svg>
+            <p className="text-sm font-semibold" style={{ color: B.tealLight }}>Ready to Scan</p>
+            <p className="text-xs mt-0.5" style={{ color: B.muted }}>Camera or handheld scanner</p>
+          </div>
+          {/* Recent scans */}
+          <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: B.muted }}>Recent Scans</p>
+          <div className="space-y-1.5">
+            {[
+              { id: "#TK-8821", type: "Adult GA", time: "4s ago" },
+              { id: "#TK-8820", type: "Adult GA", time: "9s ago" },
+              { id: "#TK-8819", type: "Child 3–17", time: "23s ago" },
+            ].map(({ id, type, time }) => (
+              <div key={id} className="flex items-center justify-between rounded-lg px-3 py-2.5"
+                style={{ backgroundColor: "#0D1520" }}>
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: "rgba(34,197,94,0.15)" }}>
+                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth={2.5}><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <div>
+                    <p className="text-xs font-mono font-semibold text-white">{id}</p>
+                    <p className="text-[10px]" style={{ color: B.muted }}>{type}</p>
+                  </div>
+                </div>
+                <span className="text-[10px]" style={{ color: B.muted }}>{time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Floating cache badge */}
+      <div className="absolute -top-4 -right-4 rounded-xl px-3.5 py-2.5 border shadow-xl z-10"
+        style={{ backgroundColor: B.navyDarkest, borderColor: "rgba(32,153,145,0.4)", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}>
+        <p className="text-[10px] font-medium mb-0.5" style={{ color: B.muted }}>Synced offline</p>
+        <p className="text-xl font-bold font-mono" style={{ color: B.teal }}>4,219</p>
+        <p className="text-[9px]" style={{ color: B.muted }}>tickets cached</p>
+      </div>
+    </div>
+  );
+}
+
 const FEATURES = [
   { title: "100% Native Offline Functionality", body: "No cached web app. No polling for connectivity. Evinra is built native — it runs entirely on the device regardless of whether there's a single bar of service." },
   { title: "35+ Scans Per Minute, Per Device", body: "Our architecture guarantees gate velocity. Each device processes tickets locally at sub-second speed, then syncs to the network the moment connectivity returns." },
@@ -39,7 +112,7 @@ function Hero() {
             <GhostBtn href="#hardware">See the Hardware Specs →</GhostBtn>
           </div>
         </div>
-        <ImgPlaceholderDark label="[ IMG-01: Evinra POS scanning screen on iPad/Zebra in field environment ]" className="aspect-[4/3]"/>
+        <MockupOfflinePOS />
       </div>
     </section>
   );
