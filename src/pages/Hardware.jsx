@@ -1,10 +1,43 @@
 import { B, TealBtn, GhostBtn } from "../brand";
 import { Navbar, Footer, DemoFormSection, useInView, IconCheck, IconArrowRight } from "../components/shared";
 
+const IconTablet = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+    <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth={2.5} strokeLinecap="round"/>
+  </svg>
+);
+const IconPhone2 = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+    <rect x="6" y="2" width="12" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth={2.5} strokeLinecap="round"/>
+  </svg>
+);
+const IconScan = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+    <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" strokeLinecap="round"/>
+    <line x1="7" y1="12" x2="17" y2="12" strokeWidth={2} strokeLinecap="round"/>
+  </svg>
+);
+const IconBluetooth = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+    <polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+const IconPrinter = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+    <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" strokeLinecap="round" strokeLinejoin="round"/>
+    <rect x="6" y="14" width="12" height="8"/>
+  </svg>
+);
+const IconNetwork = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+    <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const HARDWARE_GRID = [
   {
     category: "Consumer Tablets",
-    icon: "📱",
+    Icon: IconTablet,
     items: [
       { name: "iPad 9th Gen (or higher)", notes: "Recommended starter device" },
       { name: "iPad Mini 6th Gen", notes: "Compact gate use" },
@@ -14,7 +47,7 @@ const HARDWARE_GRID = [
   },
   {
     category: "Consumer Smartphones",
-    icon: "📲",
+    Icon: IconPhone2,
     items: [
       { name: "iPhone 12 or newer", notes: "Entry-level gate device" },
       { name: "iPhone 14 Pro / 15 series", notes: "Fastest camera scanning speed" },
@@ -23,7 +56,7 @@ const HARDWARE_GRID = [
   },
   {
     category: "Enterprise Scanners",
-    icon: "⚡",
+    Icon: IconScan,
     items: [
       { name: "Zebra TC21", notes: "Entry enterprise — best for high-volume gates" },
       { name: "Zebra TC26", notes: "Enhanced wireless, preferred for outdoor" },
@@ -33,7 +66,7 @@ const HARDWARE_GRID = [
   },
   {
     category: "Bluetooth Peripherals",
-    icon: "🔌",
+    Icon: IconBluetooth,
     items: [
       { name: "Socket Mobile CHS 7Ci", notes: "1D barcode companion scanner" },
       { name: "Socket Mobile CHS 7Qi", notes: "2D QR companion scanner — recommended" },
@@ -42,7 +75,7 @@ const HARDWARE_GRID = [
   },
   {
     category: "Cash Drawer & Receipt",
-    icon: "💳",
+    Icon: IconPrinter,
     items: [
       { name: "Star Micronics SM-S230i", notes: "Bluetooth receipt printer" },
       { name: "APG Vasario Series", notes: "Cash drawer — USB or wireless" },
@@ -51,7 +84,7 @@ const HARDWARE_GRID = [
   },
   {
     category: "Network Infrastructure",
-    icon: "📡",
+    Icon: IconNetwork,
     items: [
       { name: "Cradlepoint R1900 LTE Router", notes: "Primary field LTE gateway" },
       { name: "Peplink MAX BR1 Mini", notes: "Failover and multi-carrier bonding" },
@@ -69,12 +102,69 @@ const REQUIREMENTS = [
   { label: "WiFi", value: "802.11ac (WiFi 5) for local network sync" },
 ];
 
+function MockupDeviceEcosystem() {
+  const devices = [
+    { label: "iPad",        sub: "Gate scanner",       col: 1, row: 1 },
+    { label: "Zebra TC52",  sub: "Enterprise gate",    col: 3, row: 1 },
+    { label: "iPhone 15",   sub: "Supervisor",         col: 1, row: 3 },
+    { label: "Socket QR",   sub: "BT peripheral",      col: 3, row: 3 },
+  ];
+  return (
+    <div className="relative w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+      {/* Hub center */}
+      <div className="relative flex items-center justify-center" style={{ minHeight: 280 }}>
+        {/* Connection lines */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {[[160,140,60,70],[160,140,260,70],[160,140,60,210],[160,140,260,210]].map(([x1,y1,x2,y2], i) => (
+            <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+              stroke={`rgba(32,153,145,0.25)`} strokeWidth="1.5" strokeDasharray="5 4"/>
+          ))}
+        </svg>
+        {/* Center hub */}
+        <div className="relative z-10 rounded-2xl border px-5 py-4 text-center"
+          style={{ backgroundColor: B.navyDeep, borderColor: `rgba(32,153,145,0.4)`, boxShadow: "0 0 32px rgba(32,153,145,0.12)" }}>
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto mb-2" style={{ backgroundColor: "rgba(32,153,145,0.15)" }}>
+            <IconNetwork />
+          </div>
+          <p className="text-xs font-semibold text-white">Evinra Hub</p>
+          <p className="text-[10px] mt-0.5" style={{ color: B.tealLight }}>Local LAN · Offline</p>
+        </div>
+        {/* Device nodes */}
+        {[
+          { label: "iPad",       sub: "Gate scanner",    pos: "top-0 left-0" },
+          { label: "Zebra TC52", sub: "Enterprise gate", pos: "top-0 right-0" },
+          { label: "iPhone 15",  sub: "Supervisor",      pos: "bottom-0 left-0" },
+          { label: "Socket QR",  sub: "BT peripheral",   pos: "bottom-0 right-0" },
+        ].map(({ label, sub, pos }) => (
+          <div key={label} className={`absolute ${pos} rounded-xl border px-3 py-2.5 z-10`}
+            style={{ backgroundColor: "#0D1520", borderColor: `${B.navy}70` }}>
+            <div className="flex items-center gap-1.5 mb-0.5">
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#22C55E" }}/>
+              <p className="text-[11px] font-semibold text-white">{label}</p>
+            </div>
+            <p className="text-[10px]" style={{ color: B.muted }}>{sub}</p>
+          </div>
+        ))}
+      </div>
+      {/* Stat strip */}
+      <div className="grid grid-cols-3 gap-2 mt-4">
+        {[["6", "Devices"],["35+","Scans/min"],["0","Bars needed"]].map(([val, lbl]) => (
+          <div key={lbl} className="rounded-lg p-2.5 text-center border" style={{ backgroundColor: "#0D1520", borderColor: `${B.navy}60` }}>
+            <p className="text-base font-bold font-mono" style={{ color: B.teal }}>{val}</p>
+            <p className="text-[9px] leading-tight" style={{ color: B.muted }}>{lbl}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section className="relative pt-28 pb-20" style={{ backgroundColor: B.navyDarkest }}>
+    <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: B.navyDarkest }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 55% 45% at 68% 50%, ${B.navyDeep} 0%, transparent 70%)` }}/>
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="max-w-2xl">
+      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
           <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6 border text-xs font-medium" style={{ backgroundColor: "rgba(32,153,145,0.1)", borderColor: "rgba(32,153,145,0.25)", color: B.tealLight }}>
             <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.teal }}/>
             Hardware Requirements
@@ -91,6 +181,7 @@ function Hero() {
             <GhostBtn href="#min-requirements">See Minimum Specs →</GhostBtn>
           </div>
         </div>
+        <MockupDeviceEcosystem />
       </div>
     </section>
   );
@@ -155,12 +246,14 @@ function HardwareGridSection() {
           <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Every device below has passed our 35+ scans-per-minute threshold under real field conditions. Not a spec sheet — a field report.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {HARDWARE_GRID.map(({ category, icon, items }, i) => (
+          {HARDWARE_GRID.map(({ category, Icon, items }, i) => (
             <div key={category}
               className={`rounded-xl p-6 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
               style={{ backgroundColor: "#fff", borderColor: "#E2E8F0", transitionDelay: `${i * 70}ms` }}>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-xl">{icon}</span>
+                <span className="w-7 h-7 rounded-md flex items-center justify-center shrink-0" style={{ backgroundColor: "rgba(32,153,145,0.1)", color: B.teal }}>
+                  <Icon />
+                </span>
                 <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: B.teal }}>{category}</p>
               </div>
               <ul className="space-y-2.5">

@@ -1,5 +1,55 @@
 import { B, TealBtn } from "../brand";
-import { Navbar, Footer, DemoFormSection, ImgPlaceholder, useInView, IconCheck, IconArrowRight } from "../components/shared";
+import { Navbar, Footer, DemoFormSection, useInView, IconCheck, IconArrowRight } from "../components/shared";
+
+function MockupCoverage() {
+  const tsRows = [
+    { label: "Online ticket sales",      yes: true },
+    { label: "White-label checkout",     yes: true },
+    { label: "Basic offline scanning",   yes: true },
+    { label: "Native offline POS",       yes: false },
+    { label: "Multi-gate fraud sync",    yes: false },
+    { label: "Vendor cash management",   yes: false },
+    { label: "Hardware inventory",       yes: false },
+    { label: "Auto commission splits",   yes: false },
+  ];
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {/* TicketSocket column */}
+      <div className="rounded-xl border overflow-hidden" style={{ borderColor: `${B.navy}50` }}>
+        <div className="px-4 py-3 border-b" style={{ backgroundColor: B.navyDeep, borderColor: `${B.navy}50` }}>
+          <p className="text-[11px] font-semibold" style={{ color: B.mutedLight }}>TicketSocket</p>
+          <p className="text-[10px]" style={{ color: B.muted }}>Ticketing platform</p>
+        </div>
+        <div className="divide-y" style={{ backgroundColor: "#0D1520", borderColor: `${B.navy}40` }}>
+          {tsRows.map(({ label, yes }) => (
+            <div key={label} className="flex items-center gap-2 px-3 py-2">
+              {yes
+                ? <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5}><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                : <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth={2}><path d="M18 6 6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              }
+              <span className="text-[10px] leading-snug" style={{ color: yes ? B.mutedLight : "#374151" }}>{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Evinra column */}
+      <div className="rounded-xl border overflow-hidden" style={{ borderColor: `rgba(32,153,145,0.4)`, boxShadow: "0 0 24px rgba(32,153,145,0.08)" }}>
+        <div className="px-4 py-3 border-b" style={{ backgroundColor: B.navyDeep, borderColor: `rgba(32,153,145,0.3)` }}>
+          <p className="text-[11px] font-semibold" style={{ color: B.tealLight }}>Evinra</p>
+          <p className="text-[10px]" style={{ color: B.muted }}>Full operations platform</p>
+        </div>
+        <div className="divide-y" style={{ backgroundColor: "#0D1520", borderColor: `${B.navy}40` }}>
+          {tsRows.map(({ label }) => (
+            <div key={label} className="flex items-center gap-2 px-3 py-2">
+              <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5}><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span className="text-[10px] leading-snug" style={{ color: B.mutedLight }}>{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const TABLE_ROWS = [
   { feature: "100% White-Label Checkout",       ts: { yes: true, label: "Yes" },          ev: { yes: true,  label: "Yes" } },
@@ -24,10 +74,10 @@ const XIcon = () => (
 
 function Hero() {
   return (
-    <section className="relative pt-28 pb-20" style={{ backgroundColor: B.navyDarkest }}>
+    <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: B.navyDarkest }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 55% 45% at 65% 50%, ${B.navyDeep} 0%, transparent 70%)` }}/>
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="max-w-2xl">
+      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
           <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6 border text-xs font-medium" style={{ backgroundColor: "rgba(32,153,145,0.1)", borderColor: "rgba(32,153,145,0.25)", color: B.tealLight }}>
             <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.teal }}/>
             Evinra vs. TicketSocket
@@ -41,6 +91,7 @@ function Hero() {
           </p>
           <TealBtn href="/request-a-demo">See Evinra in Action <IconArrowRight className="w-4 h-4"/></TealBtn>
         </div>
+        <MockupCoverage />
       </div>
     </section>
   );
