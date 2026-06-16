@@ -76,8 +76,9 @@ const NAV_ITEMS = [
     { label: "Independent Promoters", href: "#" },
   ]},
   { label: "Why Evinra", items: [
-    { label: "Our Story",     href: "/our-story" },
-    { label: "Field Results", href: "/field-results" },
+    { label: "Our Story",              href: "/our-story" },
+    { label: "Field Results",          href: "/field-results" },
+    { label: "Vs. TicketSocket",       href: "/compare/ticketsocket-alternative" },
   ]},
 ];
 
