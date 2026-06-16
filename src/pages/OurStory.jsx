@@ -1,30 +1,14 @@
 import { B, TealBtn } from "../brand";
 import { Navbar, Footer, DemoFormSection, useInView, IconArrowRight } from "../components/shared";
 
-const TIMELINE = [
-  { year: "2018–2019", title: "The Problem Gets Personal", body: "Our founding team spent three consecutive fair seasons managing technology for a regional touring circuit. Three different ticketing platforms. Two separate POS vendors. One nightmare of CSV reconciliation every Monday morning. The system wasn't failing — it was working exactly as designed. It was designed for offices, not fields." },
-  { year: "2020", title: "The Paper Napkin", body: "A global event shutdown turned a logistical nightmare into a design problem. If the industry was going to rebuild, it had to rebuild with software engineered for how outdoor events actually work — not retrofitted office tools with 'event' in the product name. The first architecture sketches were done on a paper napkin at a diner in central Florida." },
-  { year: "2021", title: "The First Build", body: "We spent a year building for exactly one client: ourselves. No investors, no outside pressure. Every feature was stress-tested in a real field environment before it was considered done. The offline POS hit 35+ scans per minute at the 47th iteration. We shipped at the 52nd." },
-  { year: "2022", title: "First External Deployment", body: "Evinra ran its first external event in the summer of 2022 — a traveling state fair circuit with 9 gate entry points, 14 food vendors, and a 48-hour settlement window. We closed the books in under 4 hours. That operator is still a client." },
-  { year: "2023–Present", title: "The Ecosystem Expands", body: "We opened the platform to a small cohort of operators across fairs, festivals, and traveling productions. Every request gets evaluated against one question: does it make the field easier, or does it only make the dashboard look better? The roadmap is built from the field up." },
-];
-
-const VALUES = [
-  { title: "Field-First, Always", body: "Every feature decision starts with one question: does this work without internet at a fairground in rural Kansas? If it doesn't, it doesn't ship." },
-  { title: "You Own Your Data", body: "Every attendee record, every transaction, every commission calculation belongs to the operator. We don't resell, aggregate, or hold your data hostage on contract expiration." },
-  { title: "Operators, Not Platforms", body: "We work for the people running the events, not the platforms taking the fees. We don't monetize your attendees. We build tools that make you better at your job." },
-  { title: "Zero Lock-In", body: "Month-to-month terms, full data portability, no exit fees. If we're not the best tool for your operation, you should be free to find out." },
-];
-
 function MockupBeforeAfter() {
   const before = [
-    { label: "Ticketing App", sub: "Online sales only", warn: true },
-    { label: "Spreadsheet", sub: "CSV reconciliation", warn: true },
-    { label: "3rd-party POS", sub: "No offline mode", warn: true },
+    { label: "Ticketing App", sub: "Online sales only" },
+    { label: "Spreadsheet", sub: "CSV reconciliation" },
+    { label: "3rd-party POS", sub: "No offline mode" },
   ];
   return (
     <div className="relative w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto select-none">
-      {/* BEFORE column */}
       <div className="rounded-2xl border overflow-hidden" style={{ backgroundColor: "#0B111C", borderColor: "#1A2840" }}>
         <div className="flex items-center gap-2 px-4 py-3 border-b" style={{ borderColor: "#1A2840" }}>
           <span className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: "#EF4444" }}>Before Evinra</span>
@@ -45,7 +29,6 @@ function MockupBeforeAfter() {
               </div>
             </div>
           ))}
-          {/* Broken connector */}
           <div className="flex flex-col items-center py-2 gap-1">
             {[0,1,2].map(i => (
               <div key={i} className="w-0.5 h-2 rounded-full" style={{ backgroundColor: "rgba(239,68,68,0.2)" }}/>
@@ -55,13 +38,11 @@ function MockupBeforeAfter() {
           </div>
         </div>
       </div>
-      {/* Arrow */}
       <div className="flex items-center justify-center my-3">
         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2} strokeLinecap="round">
           <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
         </svg>
       </div>
-      {/* AFTER column */}
       <div className="rounded-2xl border overflow-hidden" style={{ backgroundColor: "#0B111C", borderColor: `${B.teal}40` }}>
         <div className="flex items-center gap-2 px-4 py-3 border-b" style={{ borderColor: `${B.teal}20` }}>
           <span className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: B.tealLight }}>With Evinra</span>
@@ -106,11 +87,11 @@ function Hero() {
               Our Story
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.07] tracking-tight mb-6">
-              We Didn't Build Evinra<br/>
-              <span style={{ color: B.teal }}>in a Conference Room.</span>
+              We Built Evinra Because the<br/>
+              <span style={{ color: B.teal }}>Industry Standard Is Broken</span>
             </h1>
             <p className="text-[15px] leading-relaxed" style={{ color: B.mutedLight }}>
-              Evinra was built in the mud, the heat, and the noise of the field — by operators who got tired of patching together tools designed for offices. Every architectural decision has a fairground story behind it.
+              We are the tech team fighting for independent producers. Fairs, circuses, and touring productions deserve the exact same powerhouse tools as the mega-stadiums—without the ridiculous fees or the trap of multi-year contracts.
             </p>
           </div>
           <MockupBeforeAfter />
@@ -120,95 +101,28 @@ function Hero() {
   );
 }
 
-function OriginSection() {
+function QuoteSection() {
   const [ref, inView] = useInView();
   return (
-    <section ref={ref} style={{ backgroundColor: B.bg }}>
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className={`transition-all duration-500 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-5" style={{ color: B.text }}>Built by Operators. For Operators.</h2>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: B.muted }}>
-              The team that built Evinra spent years on the operational side of the outdoor events industry before writing a single line of code. We managed ticketing logistics for regional touring circuits. We reconciled multi-vendor cash boxes at 2 AM. We watched lines stall because a cloud-dependent scanner lost its connection in a dead zone.
+    <section ref={ref} style={{ backgroundColor: B.navyDeep }}>
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <h2 className={`text-3xl lg:text-4xl font-bold text-white mb-8 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
+          "I was paying them to hold my own money hostage."
+        </h2>
+        <div className="space-y-4">
+          {[
+            "Evinra wasn't dreamed up in a Silicon Valley boardroom. It was born in the everyday.",
+            "We spent two years in the trenches alongside some of the biggest touring productions and independent operators. We watched you do all the heavy lifting: moving the tents, managing exhausted crews, and taking on 100% of the physical risk to make a live event happen.",
+            "But the ticketing companies didn't share that risk. They just showed up to collect their cut.",
+            "We watched them lock operators into bad deals and sit on their payouts for weeks. You were putting everything on the line, and the software companies were treating your gates like an ATM.",
+            "The breaking point was a conversation with the director of a massive touring circus. She looked at her setup and realized she wasn't running her own box office anymore. She was doing all the work, but her operation was simply acting as a lead generator for a tech giant.",
+            "That was the trigger.",
+            "Operators didn't need another generic app. You needed a way out. We built Evinra so independent producers could finally fire the middlemen and take their gates, their data, and their cash back.",
+          ].map((p, i) => (
+            <p key={i} className={`text-sm leading-relaxed transition-all duration-500 ${inView ? "opacity-100" : "opacity-0"}`}
+              style={{ color: B.mutedLight, transitionDelay: `${i * 60}ms` }}>
+              {p}
             </p>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>
-              There was no shortage of event technology on the market. But none of it was built for the physical reality of what we were doing — and the gaps between the digital promise and the field reality were costing operators real money and real reputations.
-            </p>
-            <p className="text-sm leading-relaxed font-medium" style={{ color: B.navy }}>
-              So we stopped looking for the right tool and built it ourselves.
-            </p>
-          </div>
-          <div className={`transition-all duration-500 delay-100 ${inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"}`}>
-            <div className="rounded-2xl p-8 border" style={{ backgroundColor: B.navyDeep, borderColor: `${B.navy}60` }}>
-              <p className="text-sm font-semibold mb-4" style={{ color: B.tealLight }}>The Numbers Behind the Origin</p>
-              {[
-                ["3", "Fair seasons operating before writing a line of code"],
-                ["3", "Ticketing platforms stitched together in peak season"],
-                ["47", "POS architecture iterations before hitting 35+ scans/minute"],
-                ["4 hrs", "Time to close books after first live multi-vendor deployment"],
-              ].map(([num, label]) => (
-                <div key={label} className="flex items-start gap-4 py-3 border-b last:border-0" style={{ borderColor: `${B.navy}60` }}>
-                  <span className="text-2xl font-bold shrink-0 w-12" style={{ color: B.teal }}>{num}</span>
-                  <span className="text-sm leading-snug" style={{ color: B.mutedLight }}>{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Timeline() {
-  const [ref, inView] = useInView();
-  return (
-    <section ref={ref} style={{ backgroundColor: B.navyDarkest }}>
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="max-w-xl mb-12">
-          <h2 className="text-3xl font-bold text-white mb-3">From a Paper Napkin to the Field.</h2>
-          <p className="text-sm" style={{ color: B.muted }}>The build was never linear. Here's what it actually looked like.</p>
-        </div>
-        <div className="relative">
-          <div className="absolute left-4 top-3 bottom-3 w-px" style={{ backgroundColor: `${B.navy}80` }}/>
-          <div className="space-y-8">
-            {TIMELINE.map(({ year, title, body }, i) => (
-              <div key={year}
-                className={`relative pl-12 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-                style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="absolute left-2 top-1 w-4 h-4 rounded-full border-2 flex items-center justify-center" style={{ backgroundColor: B.navyDarkest, borderColor: B.teal }}>
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.teal }}/>
-                </div>
-                <p className="text-xs font-semibold mb-1 uppercase tracking-widest" style={{ color: B.teal }}>{year}</p>
-                <h4 className="text-base font-semibold text-white mb-2">{title}</h4>
-                <p className="text-sm leading-relaxed" style={{ color: B.muted }}>{body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Values() {
-  const [ref, inView] = useInView();
-  return (
-    <section ref={ref} style={{ backgroundColor: B.bg }}>
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="max-w-xl mb-12">
-          <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>What We Actually Believe.</h2>
-          <p className="text-sm" style={{ color: B.muted }}>Not values-page platitudes. The four principles that filter every product decision.</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-5">
-          {VALUES.map(({ title, body }, i) => (
-            <div key={title}
-              className={`rounded-xl p-7 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-              style={{ backgroundColor: "#fff", borderColor: "#E2E8F0", transitionDelay: `${i * 80}ms` }}>
-              <div className="w-1 h-6 rounded mb-4" style={{ backgroundColor: B.teal }}/>
-              <h4 className="text-base font-semibold mb-2" style={{ color: B.text }}>{title}</h4>
-              <p className="text-sm leading-relaxed" style={{ color: B.muted }}>{body}</p>
-            </div>
           ))}
         </div>
       </div>
@@ -216,41 +130,74 @@ function Values() {
   );
 }
 
-function FounderQuote() {
+function FragmentationSection() {
+  const [ref, inView] = useInView();
   return (
-    <section style={{ backgroundColor: B.navyDeep }}>
-      <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <svg className="w-8 h-8 mx-auto mb-6 opacity-40" viewBox="0 0 24 24" fill="currentColor" style={{ color: B.teal }}>
-          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-        </svg>
-        <blockquote className="text-xl lg:text-2xl font-medium text-white leading-relaxed mb-6">
-          The first version of Evinra wasn't a product. It was a survival tool for a specific Friday night in August when three scanners went offline and we had 800 people in a queue. We fixed that Friday. Then we turned the fix into a platform.
-        </blockquote>
-        <p className="text-sm font-semibold" style={{ color: B.tealLight }}>Evinra Co-Founder</p>
+    <section ref={ref} style={{ backgroundColor: B.bg }}>
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <h2 className={`text-3xl lg:text-4xl font-bold mb-6 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ color: B.text }}>
+          The Nightmare of Taped-Together Software.
+        </h2>
+        <div className="space-y-4">
+          {[
+            "But predatory fees were only half the problem. When we looked at how these massive events were actually running on the ground, it was a mess.",
+            "Ticketing lived in one app, vendors were tracked in a spreadsheet, and the point-of-sale was completely disconnected. Operators were forced to tape their operations together, crossing their fingers and hoping the integrations wouldn't break when the crowds finally showed up.",
+            "The biggest threat was the internet. Live gate operations were entirely dependent on unstable cell service. The second a packed fairground overloaded the local tower, the cloud-dependent scanners froze, the lines bottlenecked, and the revenue stopped flowing.",
+          ].map((p, i) => (
+            <p key={i} className={`text-sm leading-relaxed transition-all duration-500 ${inView ? "opacity-100" : "opacity-0"}`}
+              style={{ color: B.muted, transitionDelay: `${(i + 1) * 75}ms` }}>
+              {p}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function CTA() {
+function FieldChaosSection() {
   const [ref, inView] = useInView();
   return (
-    <section ref={ref} className="border-b" style={{ backgroundColor: B.bg, borderColor: "#E2E8F0" }}>
-      <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-        <h2 className={`text-3xl font-bold mb-4 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{ color: B.text }}>
-          The Story Continues in Your Field.
+    <section ref={ref} style={{ backgroundColor: B.navyDarkest }}>
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <h2 className={`text-3xl lg:text-4xl font-bold text-white mb-6 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}>
+          Built for the Physical Chaos of the Field.
         </h2>
-        <p className={`text-sm max-w-lg mx-auto mb-8 transition-all duration-500 delay-75 ${inView ? "opacity-100" : "opacity-0"}`} style={{ color: B.muted }}>
-          Evinra grows when the operators using it grow. Every deployment adds a new chapter. See what the platform looks like for your specific operation.
-        </p>
-        <div className={`flex flex-wrap gap-3 justify-center transition-all duration-500 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <TealBtn href="/request-a-demo">Book a Demo <IconArrowRight className="w-4 h-4"/></TealBtn>
-          <a href="/field-results" className="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-md border transition-colors duration-150"
-            style={{ borderColor: B.navy, color: B.navy }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = B.teal; e.currentTarget.style.color = B.teal; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = B.navy; e.currentTarget.style.color = B.navy; }}>
-            See Field Results →
-          </a>
+        <div className="space-y-4">
+          {[
+            "We knew another basic website wasn't going to fix this.",
+            "We didn't build Evinra in a vacuum. Our technology team worked side-by-side with real event operators, admissions staff, and concessions teams. We watched how crews actually moved, what caused the bottlenecks, and what hardware actually survived the weather.",
+            "We designed Evinra to be operational-first, rather than ticketing-first. We built a native ecosystem that thrives in the physical chaos of the field, the mud, and the midnight tear-downs. It doesn't care if the WiFi drops—your gates keep scanning and your POS keeps processing cash with zero bars of service.",
+          ].map((p, i) => (
+            <p key={i} className={`text-sm leading-relaxed transition-all duration-500 ${inView ? "opacity-100" : "opacity-0"}`}
+              style={{ color: B.mutedLight, transitionDelay: `${(i + 1) * 75}ms` }}>
+              {p}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EcosystemSection() {
+  const [ref, inView] = useInView();
+  return (
+    <section ref={ref} style={{ backgroundColor: B.bg }}>
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <h2 className={`text-3xl lg:text-4xl font-bold mb-6 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ color: B.text }}>
+          One Connected Ecosystem.
+        </h2>
+        <div className="space-y-4">
+          {[
+            "Our vision is simple: to bring modern, enterprise-level operations to the independent producer. We brought ticketing, admissions, POS, vendors, and financial reporting into one single, connected platform.",
+            "No more data silos. No more fragmented software. Just one powerful engine that lets you run the entire show.",
+          ].map((p, i) => (
+            <p key={i} className={`text-sm leading-relaxed transition-all duration-500 ${inView ? "opacity-100" : "opacity-0"}`}
+              style={{ color: i === 1 ? B.navy : B.muted, fontWeight: i === 1 ? 500 : 400, transitionDelay: `${(i + 1) * 75}ms` }}>
+              {p}
+            </p>
+          ))}
         </div>
       </div>
     </section>
@@ -263,12 +210,15 @@ export default function OurStory() {
       <Navbar/>
       <main>
         <Hero/>
-        <OriginSection/>
-        <Timeline/>
-        <Values/>
-        <FounderQuote/>
-        <CTA/>
-        <DemoFormSection title="Let's Talk Shop." subtitle="No demo script, no sales pressure. Tell us what your current operation looks like and we'll show you where Evinra fits." btnLabel="Start the Conversation →"/>
+        <QuoteSection/>
+        <FragmentationSection/>
+        <FieldChaosSection/>
+        <EcosystemSection/>
+        <DemoFormSection
+          title="Ready to Take Your Gates Back?"
+          subtitle="Schedule a custom technical walkthrough. We'll look at your current hardware, identify your bottlenecks, and show you exactly how Evinra handles the heavy lifting. No sales talk, just a look under the hood."
+          btnLabel="Request a Demo →"
+        />
       </main>
       <Footer/>
     </div>
