@@ -275,136 +275,232 @@ function Hero() {
         style={{ background: `radial-gradient(circle, rgba(32,153,145,0.07) 0%, transparent 70%)`, filter: "blur(60px)" }}/>
 
       {/* Right panel — iPad mockup */}
-      <div aria-hidden className="absolute right-0 top-0 bottom-0 w-[52%] hidden lg:flex items-center justify-center pr-6 pointer-events-none">
-        <div className="relative w-[92%]">
+      <div aria-hidden className="absolute right-0 top-0 bottom-0 w-[54%] hidden lg:flex items-center justify-center pr-4 pointer-events-none">
+        <div className="relative w-[96%]">
 
           {/* iPad frame */}
-          <div className="relative rounded-[2.2rem] shadow-[0_48px_96px_-24px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.06)]"
-            style={{ backgroundColor: "#1A1A1E", padding: "10px" }}>
-            {/* Side button right */}
-            <div className="absolute right-[-3px] top-[90px] w-[3px] h-10 rounded-l-sm" style={{ backgroundColor: "#2C2C2E" }}/>
-            {/* Volume buttons left */}
-            <div className="absolute left-[-3px] top-[80px] w-[3px] h-7 rounded-r-sm" style={{ backgroundColor: "#2C2C2E" }}/>
-            <div className="absolute left-[-3px] top-[118px] w-[3px] h-7 rounded-r-sm" style={{ backgroundColor: "#2C2C2E" }}/>
+          <div className="relative rounded-[2rem] shadow-[0_48px_96px_-24px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.07)]"
+            style={{ backgroundColor: "#18181B", padding: "9px" }}>
+            {/* Power button right */}
+            <div className="absolute right-[-4px] top-[88px] w-[4px] h-9 rounded-l-sm" style={{ backgroundColor: "#27272A" }}/>
+            {/* Volume up/down left */}
+            <div className="absolute left-[-4px] top-[76px] w-[4px] h-7 rounded-r-sm" style={{ backgroundColor: "#27272A" }}/>
+            <div className="absolute left-[-4px] top-[112px] w-[4px] h-7 rounded-r-sm" style={{ backgroundColor: "#27272A" }}/>
 
             {/* Screen */}
-            <div className="rounded-[1.6rem] overflow-hidden" style={{ backgroundColor: "#F8FAFC", aspectRatio: "4/3" }}>
-              <div className="flex h-full">
+            <div className="rounded-[1.4rem] overflow-hidden flex flex-col" style={{ backgroundColor: "#F1F5F9", aspectRatio: "4/3" }}>
+
+              {/* App top bar */}
+              <div className="flex items-center justify-between px-3 py-1.5 shrink-0" style={{ backgroundColor: "#fff", borderBottom: "1px solid #E2E8F0" }}>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-4 h-4 rounded flex items-center justify-center" style={{ backgroundColor: B.teal }}>
+                    <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth={2.5}><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <span className="text-[8px] font-bold tracking-tight" style={{ color: B.text }}>evinra</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke={B.muted} strokeWidth={2}><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                  <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke={B.muted} strokeWidth={2}><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                  <div className="w-4 h-4 rounded-full flex items-center justify-center text-[5px] font-bold text-white" style={{ backgroundColor: B.teal }}>YB</div>
+                </div>
+              </div>
+
+              {/* Body: sidebar + main */}
+              <div className="flex flex-1 overflow-hidden">
 
                 {/* Sidebar */}
-                <div className="flex flex-col border-r" style={{ width: "17%", backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
-                  {/* Logo */}
-                  <div className="flex items-center gap-1.5 px-2.5 py-2.5 border-b" style={{ borderColor: "#E2E8F0" }}>
-                    <div className="w-3.5 h-3.5 rounded-sm flex items-center justify-center" style={{ backgroundColor: B.teal }}>
-                      <svg className="w-2 h-2" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="5"/></svg>
-                    </div>
-                    <span className="text-[8px] font-bold" style={{ color: B.text }}>evinra</span>
-                    <svg className="w-2.5 h-2.5 ml-auto" viewBox="0 0 24 24" fill="none" stroke={B.muted} strokeWidth={2}><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                  </div>
-                  <div className="px-1.5 pt-2 flex-1 overflow-hidden">
-                    <p className="text-[6px] font-bold uppercase tracking-widest px-1.5 mb-1" style={{ color: B.muted }}>Operations</p>
+                <div className="flex flex-col shrink-0 border-r overflow-hidden" style={{ width: "16%", backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
+                  <div className="px-1.5 pt-2 pb-1 overflow-hidden">
+                    <p className="text-[5px] font-bold uppercase tracking-widest px-1 mb-0.5" style={{ color: B.muted }}>Operations</p>
                     {[["Today",false],["Places",false],["Shows",false],["Venue",true],["Stock & Merch",false],["Suppliers",false],["POS Sales",false]].map(([item, active]) => (
-                      <div key={item} className="flex items-center gap-1.5 px-1.5 py-[3px] rounded-md mb-[1px]"
-                        style={{ backgroundColor: active ? `rgba(32,153,145,0.12)` : "transparent" }}>
-                        <div className="w-1.5 h-1.5 rounded-sm shrink-0" style={{ backgroundColor: active ? B.teal : "#CBD5E1" }}/>
-                        <span className="text-[6.5px] font-medium truncate" style={{ color: active ? B.teal : B.muted }}>{item}</span>
+                      <div key={item} className="flex items-center gap-1 px-1 py-[2.5px] rounded mb-[1px]"
+                        style={{ backgroundColor: active ? "rgba(32,153,145,0.12)" : "transparent" }}>
+                        <div className="w-1.5 h-1.5 rounded-[2px] shrink-0" style={{ backgroundColor: active ? B.teal : "#CBD5E1" }}/>
+                        <span className="text-[5.5px] font-medium truncate leading-none" style={{ color: active ? B.teal : B.muted }}>{item}</span>
                       </div>
                     ))}
-                    <p className="text-[6px] font-bold uppercase tracking-widest px-1.5 mb-1 mt-2" style={{ color: B.muted }}>Settlement</p>
-                    {["P&L","Shows Settlement","Tour Office","All Expenses","Wrap Report"].map(item => (
-                      <div key={item} className="flex items-center gap-1.5 px-1.5 py-[3px] rounded-md mb-[1px]">
-                        <div className="w-1.5 h-1.5 rounded-sm shrink-0" style={{ backgroundColor: "#CBD5E1" }}/>
-                        <span className="text-[6.5px] font-medium truncate" style={{ color: B.muted }}>{item}</span>
+                    <p className="text-[5px] font-bold uppercase tracking-widest px-1 mb-0.5 mt-1.5" style={{ color: B.muted }}>Settlement &amp; Reports</p>
+                    {["P&L","Shows Settlement","Tour Office","Day-of-Show","All Expenses","Wrap Report","Costing Insights"].map(item => (
+                      <div key={item} className="flex items-center gap-1 px-1 py-[2px] rounded mb-[1px]">
+                        <div className="w-1.5 h-1.5 rounded-[2px] shrink-0" style={{ backgroundColor: "#CBD5E1" }}/>
+                        <span className="text-[5.5px] truncate leading-none" style={{ color: B.muted }}>{item}</span>
                       </div>
                     ))}
+                    <p className="text-[5px] font-bold uppercase tracking-widest px-1 mb-0.5 mt-1.5" style={{ color: B.muted }}>Configurations</p>
+                    {["Settings","Access & Roles","POS Gateway","Items & SKUs","Crew & Staff"].map(item => (
+                      <div key={item} className="flex items-center gap-1 px-1 py-[2px] rounded mb-[1px]">
+                        <div className="w-1.5 h-1.5 rounded-[2px] shrink-0" style={{ backgroundColor: "#CBD5E1" }}/>
+                        <span className="text-[5.5px] truncate leading-none" style={{ color: B.muted }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-auto px-1.5 py-1.5 border-t" style={{ borderColor: "#E2E8F0" }}>
+                    <div className="flex items-center gap-1 px-1 py-[2px]">
+                      <div className="w-1.5 h-1.5 rounded-[2px] shrink-0" style={{ backgroundColor: "#CBD5E1" }}/>
+                      <span className="text-[5.5px]" style={{ color: B.muted }}>Help</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Main content */}
-                <div className="flex flex-col flex-1 overflow-hidden">
-                  {/* Top bar */}
-                  <div className="flex items-center justify-between px-3 py-1.5 border-b" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
-                    <div className="flex items-center gap-1.5">
-                      <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5}><path d="M15 18l-6-6 6-6" strokeLinecap="round"/></svg>
-                      <span className="text-[7px] font-medium" style={{ color: B.teal }}>Back Venue List</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke={B.muted} strokeWidth={2}><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                      <div className="w-5 h-5 rounded-full flex items-center justify-center text-[6px] font-bold text-white" style={{ backgroundColor: B.teal }}>YB</div>
-                    </div>
-                  </div>
+                <div className="flex flex-col flex-1 overflow-hidden" style={{ backgroundColor: "#F8FAFC" }}>
 
-                  {/* Venue Details title + info cards */}
-                  <div className="px-3 py-2 border-b" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
-                    <p className="text-[9px] font-bold mb-2" style={{ color: B.text }}>Venue Details</p>
+                  {/* Back + title */}
+                  <div className="px-3 pt-2 pb-1.5 border-b" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                    <div className="flex items-center gap-1 mb-1">
+                      <svg className="w-2 h-2" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5}><path d="M15 18l-6-6 6-6" strokeLinecap="round"/></svg>
+                      <span className="text-[6px] font-medium" style={{ color: B.teal }}>Back Venue List</span>
+                    </div>
+                    <p className="text-[9px] font-bold mb-1.5" style={{ color: B.text }}>Venue Details</p>
                     <div className="grid grid-cols-4 gap-1.5">
                       {[
-                        { label: "BASIC INFO", color: B.teal, lines: ["Week 26 · COLUMBUS","Evinra Show Prods.","Lackeland Ice Arena"] },
-                        { label: "CONTACT",   color: B.teal, lines: ["Flores, Juanita","(207) 555-0119","debbie@example.com"] },
-                        { label: "PLAY DATE", color: B.teal, lines: ["Mon, Oct 06, 2024","01:06 AM / 03:44 AM"] },
-                        { label: "COST",      color: B.teal, lines: ["Rent: $27,949.00","Paid: $65,749.00"] },
-                      ].map(({ label, color, lines }) => (
+                        { label:"BASIC INFO",  lines:["Week 26 · COLUMBUS","Evinra Show Productions","Lackeland Ice Arena","Florida"] },
+                        { label:"CONTACT",     lines:["Flores, Juanita","(207) 555-0119","debbie.baker@example.com"] },
+                        { label:"PLAY DATE",   lines:["Mon, October 06, 2024","01:06 AM  /  03:44 AM"] },
+                        { label:"COST",        lines:["Rent Cost","$27,949.00","Paid Amount","$65,749.00"] },
+                      ].map(({ label, lines }) => (
                         <div key={label} className="rounded border p-1.5" style={{ borderColor: "#E2E8F0", backgroundColor: "#F8FAFC" }}>
-                          <p className="text-[5.5px] font-bold uppercase tracking-widest mb-1" style={{ color }}>{label}</p>
-                          {lines.map(l => <p key={l} className="text-[6px] leading-tight" style={{ color: B.muted }}>{l}</p>)}
+                          <p className="text-[5px] font-bold uppercase tracking-widest mb-1" style={{ color: B.teal }}>{label}</p>
+                          {lines.map(l => <p key={l} className="text-[5.5px] leading-tight" style={{ color: B.muted }}>{l}</p>)}
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Tabs */}
-                  <div className="flex items-center border-b px-3 overflow-hidden" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
-                    {["Contract","Promotions","Insurance","Permits","Equipment","Expenses","Manager Notes","Taxes","Finance"].map((tab, i) => (
-                      <div key={tab} className="px-1.5 py-1 text-[6px] font-medium shrink-0 border-b-[1.5px]"
-                        style={{ borderColor: i === 8 ? B.teal : "transparent", color: i === 8 ? B.teal : B.muted }}>
+                  <div className="flex items-center border-b overflow-hidden px-2" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                    {["Contract","Promotions","Insurance","Layout","Permits","Equipment","Security Fire/EMS","Water Connection","Expenses","Manager Notes","Taxes","Finance"].map((tab, i) => (
+                      <div key={tab} className="px-1.5 py-1 text-[5px] font-medium shrink-0 border-b-[1.5px] whitespace-nowrap"
+                        style={{ borderColor: i === 11 ? B.teal : "transparent", color: i === 11 ? B.teal : B.muted }}>
                         {tab}
                       </div>
                     ))}
                   </div>
 
-                  {/* Finance table */}
-                  <div className="flex-1 overflow-hidden px-3 py-1.5" style={{ backgroundColor: "#F8FAFC" }}>
-                    {/* Table header */}
-                    <div className="grid text-[5.5px] font-bold uppercase tracking-wide pb-1 border-b"
-                      style={{ gridTemplateColumns: "1.6fr 0.9fr 0.9fr 0.9fr 0.7fr 1fr 1fr", borderColor: "#E2E8F0", color: B.muted }}>
-                      <div/>
-                      <div>Gross Sales</div><div>Commission</div><div>Net Sales</div>
-                      <div>Per Cap.</div><div>Online/C.Card</div><div>Cash on Hand</div>
-                    </div>
-                    {[
-                      { cat:"BOX OFFICE", g:"$710.68", c:"$351.02", n:"$473.85", p:"$710.68", o:"$446.61", ch:"$450.54" },
-                      { cat:"MIDWAY",     g:"$630.44", c:"$328.85", n:"$106.58", p:"$630.44", o:"$105.55", ch:"$475.22" },
-                      { cat:"CONCESSION", g:"$854.08", c:"$219.78", n:"$779.58", p:"$854.08", o:"$490.51", ch:"$202.87" },
-                      { cat:"NOVELTIES",  g:"$782.01", c:"$739.65", n:"$943.65", p:"$782.01", o:"$293.01", ch:"$928.41" },
-                      { cat:"PARKING",    g:"$948.55", c:"$589.99", n:"$576.28", p:"$948.55", o:"$396.84", ch:"$275.43" },
-                      { cat:"OTHERS",     g:"$948.55", c:"$589.99", n:"$576.28", p:"$948.55", o:"$396.84", ch:"$275.43" },
-                    ].map((row, i) => (
-                      <div key={row.cat} className="grid text-[6px] py-[3px] border-b"
-                        style={{ gridTemplateColumns: "1.6fr 0.9fr 0.9fr 0.9fr 0.7fr 1fr 1fr", borderColor: "#F1F5F9", backgroundColor: i % 2 === 0 ? "#fff" : "transparent" }}>
-                        <div className="font-semibold" style={{ color: B.teal }}>{row.cat}</div>
-                        {[row.g,row.c,row.n,row.p,row.o,row.ch].map((v,j) => <div key={j} style={{ color: B.text }}>{v}</div>)}
+                  {/* Finance tab body */}
+                  <div className="flex-1 overflow-hidden px-2.5 py-1.5">
+
+                    {/* Price inputs row */}
+                    <div className="grid grid-cols-3 gap-2 mb-1.5">
+                      {/* Box Office */}
+                      <div className="rounded border p-1.5" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                        <p className="text-[5.5px] font-semibold mb-1" style={{ color: B.text }}>Box Office Ticket Price</p>
+                        <div className="grid grid-cols-2 gap-1">
+                          {[["Adult","0.00"],["VIP Adult","0.00"],["Child","0.00"],["VIP Child","0.00"]].map(([l,v]) => (
+                            <div key={l} className="flex items-center gap-0.5">
+                              <span className="text-[4.5px] rounded px-0.5 py-px shrink-0" style={{ backgroundColor: "#E2E8F0", color: B.muted }}>{l}</span>
+                              <span className="text-[5px] font-mono" style={{ color: B.text }}>{v}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    ))}
-                    {/* Total */}
-                    <div className="grid text-[6px] py-[3px] font-bold border-b-2" style={{ gridTemplateColumns: "1.6fr 0.9fr 0.9fr 0.9fr 0.7fr 1fr 1fr", borderColor: B.teal }}>
-                      <div style={{ color: B.text }}>TOTAL</div>
-                      {["$406.27","$169.43","$601.13","$406.27","$767.50","$778.35"].map((v,i) => <div key={i} style={{ color: B.teal }}>{v}</div>)}
+                      {/* Midway */}
+                      <div className="rounded border p-1.5" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                        <p className="text-[5.5px] font-semibold mb-1" style={{ color: B.text }}>Midway</p>
+                        <div className="flex items-center gap-0.5">
+                          <span className="text-[4.5px] rounded px-0.5 py-px" style={{ backgroundColor: "#E2E8F0", color: B.muted }}>Ticket Price</span>
+                          <span className="text-[5px] font-mono font-semibold" style={{ color: B.text }}>7.00</span>
+                        </div>
+                      </div>
+                      {/* Commission Rates */}
+                      <div className="rounded border p-1.5" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                        <p className="text-[5.5px] font-semibold mb-1" style={{ color: B.text }}>Commission Rates</p>
+                        <div className="grid grid-cols-2 gap-1">
+                          {[["VIP Upgrade","0.00"],["Midway","0.00"],["Concession","0.015"],["Others","0.00"]].map(([l,v]) => (
+                            <div key={l} className="flex items-center gap-0.5">
+                              <span className="text-[4.5px] rounded px-0.5 py-px shrink-0" style={{ backgroundColor: "#E2E8F0", color: B.muted }}>{l}</span>
+                              <span className="text-[5px] font-mono" style={{ color: B.text }}>{v}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                    {/* Summary row */}
-                    <div className="flex gap-3 mt-1.5">
-                      <div className="flex-1 space-y-[2px]">
-                        {[["EXPENSES","$300.13"],["SALES TAXES","$300.13"],["NET INCOME","$301.00"]].map(([k,v]) => (
-                          <div key={k} className="flex justify-between text-[6px]">
+
+                    {/* Play date + cash beginning */}
+                    <div className="flex items-center justify-between mb-1 px-0.5">
+                      <div className="flex items-center gap-1">
+                        <span className="text-[5.5px] font-medium" style={{ color: B.muted }}>Play Date</span>
+                        <div className="flex items-center gap-0.5 rounded border px-1 py-px" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                          <span className="text-[5px] font-mono" style={{ color: B.text }}>08/25/2024</span>
+                          <svg className="w-1.5 h-1.5" viewBox="0 0 24 24" fill="none" stroke={B.muted} strokeWidth={2}><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-0.5">
+                          <div className="w-3 h-3 rounded flex items-center justify-center" style={{ backgroundColor: "#DCFCE7" }}>
+                            <svg className="w-2 h-2" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth={2}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                          </div>
+                          <div className="w-3 h-3 rounded flex items-center justify-center" style={{ backgroundColor: "#FEE2E2" }}>
+                            <svg className="w-2 h-2" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth={2}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                          </div>
+                        </div>
+                        <span className="text-[5.5px] font-semibold" style={{ color: B.muted }}>CASH BEGINNING: <span style={{ color: B.text }}>$56,778.64</span></span>
+                      </div>
+                    </div>
+
+                    {/* Finance table */}
+                    <div className="rounded border overflow-hidden" style={{ borderColor: "#E2E8F0" }}>
+                      {/* Header */}
+                      <div className="grid text-[5px] font-bold uppercase tracking-wide"
+                        style={{ gridTemplateColumns: "1.4fr 0.8fr 0.8fr 0.8fr 0.65fr 0.85fr 0.85fr 0.4fr", backgroundColor: "#F1F5F9", color: B.muted, borderBottom: "1px solid #E2E8F0" }}>
+                        <div className="px-1.5 py-1"/>
+                        {["Gross Sales","Commission","Net Sales","Per Cap.","Online/C. Card","Cash on Hand",""].map((h,i) => (
+                          <div key={i} className="px-1 py-1 text-right">{h}</div>
+                        ))}
+                      </div>
+                      {[
+                        { cat:"BOX OFFICE", g:"$710.68", c:"$351.02", n:"$473.85", p:"$710.68", o:"$446.61", ch:"$450.54" },
+                        { cat:"MIDWAY",     g:"$630.44", c:"$328.85", n:"$106.58", p:"$630.44", o:"$105.55", ch:"$475.22" },
+                        { cat:"CONCESSION", g:"$854.08", c:"$219.78", n:"$779.58", p:"$854.08", o:"$490.51", ch:"$202.87" },
+                        { cat:"NOVELTIES",  g:"$782.01", c:"$739.65", n:"$943.65", p:"$782.01", o:"$293.01", ch:"$928.41" },
+                        { cat:"PARKING",    g:"$948.55", c:"$589.99", n:"$576.28", p:"$948.55", o:"$396.84", ch:"$275.43" },
+                        { cat:"OTHERS",     g:"$948.55", c:"$589.99", n:"$576.28", p:"$948.55", o:"$396.84", ch:"$275.43" },
+                      ].map((row, i) => (
+                        <div key={row.cat} className="grid text-[5px] border-b items-center"
+                          style={{ gridTemplateColumns: "1.4fr 0.8fr 0.8fr 0.8fr 0.65fr 0.85fr 0.85fr 0.4fr", borderColor: "#F1F5F9", backgroundColor: i % 2 === 0 ? "#fff" : "#F8FAFC" }}>
+                          <div className="px-1.5 py-[3px] font-semibold" style={{ color: B.teal }}>{row.cat}</div>
+                          {[row.g,row.c,row.n,row.p,row.o,row.ch].map((v,j) => (
+                            <div key={j} className="px-1 py-[3px] text-right font-mono" style={{ color: B.text }}>{v}</div>
+                          ))}
+                          <div className="px-1 py-[3px] flex justify-end">
+                            <span className="text-[4.5px] font-semibold px-1 py-px rounded text-white" style={{ backgroundColor: B.teal }}>+Add</span>
+                          </div>
+                        </div>
+                      ))}
+                      {/* Total row */}
+                      <div className="grid text-[5px] font-bold border-t-2 items-center"
+                        style={{ gridTemplateColumns: "1.4fr 0.8fr 0.8fr 0.8fr 0.65fr 0.85fr 0.85fr 0.4fr", borderColor: B.teal, backgroundColor: "#F8FAFC" }}>
+                        <div className="px-1.5 py-[3px]" style={{ color: B.text }}>TOTAL</div>
+                        {["$406.27","$169.43","$601.13","$406.27","$767.50","$778.35"].map((v,i) => (
+                          <div key={i} className="px-1 py-[3px] text-right font-mono" style={{ color: B.teal }}>{v}</div>
+                        ))}
+                        <div className="px-1">
+                          <span className="text-[4.5px] font-semibold px-1 py-px rounded text-white" style={{ backgroundColor: B.teal }}>+Add</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom summary */}
+                    <div className="flex gap-3 mt-1">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-1 mb-0.5">
+                          <span className="text-[5px] font-medium" style={{ color: B.muted }}>DROP COUNT</span>
+                          <div className="flex-1 rounded border px-1 py-px" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                            <span className="text-[5px] font-mono" style={{ color: B.text }}>0</span>
+                          </div>
+                        </div>
+                        {[["EXPENSES","$300.13"],["SALES TAXES","$300.13"],["NET INCOME","$301.00"]].map(([k,v], i) => (
+                          <div key={k} className="flex justify-between text-[5px] py-[1.5px]" style={{ borderTop: i === 0 ? `1px solid #E2E8F0` : "none" }}>
                             <span style={{ color: B.muted }}>{k}</span>
-                            <span className="font-bold" style={{ color: B.teal }}>{v}</span>
+                            <span className="font-bold font-mono" style={{ color: i === 2 ? B.teal : B.text }}>{v}</span>
                           </div>
                         ))}
                       </div>
-                      <div className="flex-1 space-y-[2px]">
-                        {[["TOTAL EXPENSES","$300.13"],["CASH AVAILABLE","$0.00"],["CASH ENDING BALANCE","$0.00"]].map(([k,v]) => (
-                          <div key={k} className="flex justify-between text-[6px]">
+                      <div className="flex-1 space-y-[1.5px]">
+                        {[["TOTAL EXPENSES","$300.13"],["CASH EXPENSES","$0.00"],["CASH AVAILABLE","$0.00"],["DEPOSITS/TRANSFERS","$601.13"],["CASH ENDING BALANCE","$0.00"]].map(([k,v]) => (
+                          <div key={k} className="flex justify-between text-[5px] py-[1px]">
                             <span style={{ color: B.muted }}>{k}</span>
-                            <span className="font-bold" style={{ color: B.teal }}>{v}</span>
+                            <span className="font-bold font-mono" style={{ color: B.teal }}>{v}</span>
                           </div>
                         ))}
                       </div>
@@ -412,16 +508,16 @@ function Hero() {
                   </div>
 
                   {/* Save bar */}
-                  <div className="flex items-center gap-2 px-3 py-2 border-t" style={{ borderColor: "#E2E8F0", backgroundColor: B.navyDarkest }}>
-                    <button className="px-2.5 py-1 rounded text-[6.5px] font-semibold border" style={{ borderColor: "rgba(255,255,255,0.2)", color: "#fff" }}>Save</button>
-                    <button className="px-2.5 py-1 rounded text-[6.5px] font-semibold text-white" style={{ backgroundColor: B.teal }}>Close Finance</button>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 border-t shrink-0" style={{ borderColor: "#E2E8F0", backgroundColor: B.navyDarkest }}>
+                    <button className="px-2 py-0.5 rounded text-[6px] font-semibold border" style={{ borderColor: "rgba(255,255,255,0.25)", color: "#fff" }}>Save</button>
+                    <button className="px-2 py-0.5 rounded text-[6px] font-semibold text-white" style={{ backgroundColor: B.teal }}>Close Finance</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Floating card: auto-settled */}
+          {/* Floating card: net income */}
           <div className="absolute -bottom-4 -right-6 rounded-xl p-3 border shadow-2xl"
             style={{ backgroundColor: B.navyDarkest, borderColor: `rgba(32,153,145,0.35)`, boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}>
             <div className="flex items-center gap-2">
@@ -430,7 +526,7 @@ function Hero() {
               </div>
               <div>
                 <p className="text-[11px] font-semibold text-white">Books closed in 4 hrs</p>
-                <p className="text-[10px]" style={{ color: B.muted }}>$19,750 · Southeast Fair · Day 3</p>
+                <p className="text-[10px]" style={{ color: B.muted }}>Net Income $301.00 · Week 26</p>
               </div>
             </div>
           </div>
@@ -446,7 +542,7 @@ function Hero() {
           </div>
         </div>
         <div aria-hidden className="absolute inset-0"
-          style={{ background: `linear-gradient(to right, ${B.navyDarkest} 0%, transparent 42%)` }}/>
+          style={{ background: `linear-gradient(to right, ${B.navyDarkest} 0%, transparent 40%)` }}/>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
