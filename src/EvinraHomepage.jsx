@@ -274,68 +274,170 @@ function Hero() {
       <div aria-hidden className="absolute right-0 top-1/3 w-80 h-80 pointer-events-none"
         style={{ background: `radial-gradient(circle, rgba(32,153,145,0.07) 0%, transparent 70%)`, filter: "blur(60px)" }}/>
 
-      {/* Right panel — Product UI mockup */}
-      <div aria-hidden className="absolute right-0 top-0 bottom-0 w-[50%] hidden lg:flex items-center justify-center pr-10 pointer-events-none">
-        <div className="relative w-[88%]">
-          {/* Main dashboard card */}
-          <div className="rounded-2xl border overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]"
-            style={{ backgroundColor: "#111D2E", borderColor: `${B.navy}70` }}>
-            {/* Window chrome */}
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b" style={{ borderColor: `${B.navy}60`, backgroundColor: "#0D1520" }}>
-              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }}/>
-              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FEBC2E" }}/>
-              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#28C840" }}/>
-              <span className="text-[11px] ml-3 font-mono" style={{ color: B.muted }}>Evinra — Live Operations</span>
-            </div>
-            <div className="p-5 space-y-4">
-              {/* Gate status grid */}
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: B.muted }}>Active Gates</p>
-                <div className="grid grid-cols-3 gap-1.5">
-                  {[["Gate 1","12 scans/m"],["Gate 2","38 scans/m"],["Gate 3","41 scans/m"],["Gate 4","29 scans/m"],["Gate 5","37 scans/m"],["Gate 6","—"]].map(([g, rate], i) => (
-                    <div key={g} className="rounded-lg px-2 py-2 border" style={{ backgroundColor: "#0D1520", borderColor: i < 5 ? `rgba(32,153,145,0.22)` : `${B.navy}40` }}>
-                      <div className="flex items-center gap-1 mb-1">
-                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: i < 5 ? "#22C55E" : "#4B5563" }}/>
-                        <span className="text-[9px] font-medium" style={{ color: B.mutedLight }}>{g}</span>
-                      </div>
-                      <span className="text-[10px] font-mono font-semibold" style={{ color: i < 5 ? B.tealLight : B.muted }}>{rate}</span>
+      {/* Right panel — iPad mockup */}
+      <div aria-hidden className="absolute right-0 top-0 bottom-0 w-[52%] hidden lg:flex items-center justify-center pr-6 pointer-events-none">
+        <div className="relative w-[92%]">
+
+          {/* iPad frame */}
+          <div className="relative rounded-[2.2rem] shadow-[0_48px_96px_-24px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.06)]"
+            style={{ backgroundColor: "#1A1A1E", padding: "10px" }}>
+            {/* Side button right */}
+            <div className="absolute right-[-3px] top-[90px] w-[3px] h-10 rounded-l-sm" style={{ backgroundColor: "#2C2C2E" }}/>
+            {/* Volume buttons left */}
+            <div className="absolute left-[-3px] top-[80px] w-[3px] h-7 rounded-r-sm" style={{ backgroundColor: "#2C2C2E" }}/>
+            <div className="absolute left-[-3px] top-[118px] w-[3px] h-7 rounded-r-sm" style={{ backgroundColor: "#2C2C2E" }}/>
+
+            {/* Screen */}
+            <div className="rounded-[1.6rem] overflow-hidden" style={{ backgroundColor: "#F8FAFC", aspectRatio: "4/3" }}>
+              <div className="flex h-full">
+
+                {/* Sidebar */}
+                <div className="flex flex-col border-r" style={{ width: "17%", backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
+                  {/* Logo */}
+                  <div className="flex items-center gap-1.5 px-2.5 py-2.5 border-b" style={{ borderColor: "#E2E8F0" }}>
+                    <div className="w-3.5 h-3.5 rounded-sm flex items-center justify-center" style={{ backgroundColor: B.teal }}>
+                      <svg className="w-2 h-2" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="5"/></svg>
                     </div>
-                  ))}
+                    <span className="text-[8px] font-bold" style={{ color: B.text }}>evinra</span>
+                    <svg className="w-2.5 h-2.5 ml-auto" viewBox="0 0 24 24" fill="none" stroke={B.muted} strokeWidth={2}><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                  </div>
+                  <div className="px-1.5 pt-2 flex-1 overflow-hidden">
+                    <p className="text-[6px] font-bold uppercase tracking-widest px-1.5 mb-1" style={{ color: B.muted }}>Operations</p>
+                    {[["Today",false],["Places",false],["Shows",false],["Venue",true],["Stock & Merch",false],["Suppliers",false],["POS Sales",false]].map(([item, active]) => (
+                      <div key={item} className="flex items-center gap-1.5 px-1.5 py-[3px] rounded-md mb-[1px]"
+                        style={{ backgroundColor: active ? `rgba(32,153,145,0.12)` : "transparent" }}>
+                        <div className="w-1.5 h-1.5 rounded-sm shrink-0" style={{ backgroundColor: active ? B.teal : "#CBD5E1" }}/>
+                        <span className="text-[6.5px] font-medium truncate" style={{ color: active ? B.teal : B.muted }}>{item}</span>
+                      </div>
+                    ))}
+                    <p className="text-[6px] font-bold uppercase tracking-widest px-1.5 mb-1 mt-2" style={{ color: B.muted }}>Settlement</p>
+                    {["P&L","Shows Settlement","Tour Office","All Expenses","Wrap Report"].map(item => (
+                      <div key={item} className="flex items-center gap-1.5 px-1.5 py-[3px] rounded-md mb-[1px]">
+                        <div className="w-1.5 h-1.5 rounded-sm shrink-0" style={{ backgroundColor: "#CBD5E1" }}/>
+                        <span className="text-[6.5px] font-medium truncate" style={{ color: B.muted }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              {/* Revenue + scan stats */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="rounded-xl p-3.5 border" style={{ backgroundColor: "#0D1520", borderColor: `${B.navy}50` }}>
-                  <p className="text-[10px] mb-1 font-medium" style={{ color: B.muted }}>Revenue Today</p>
-                  <p className="text-xl font-bold text-white font-mono">$24,830</p>
-                  <p className="text-[10px] mt-0.5" style={{ color: "#22C55E" }}>+14.2% vs yesterday</p>
-                </div>
-                <div className="rounded-xl p-3.5 border" style={{ backgroundColor: "#0D1520", borderColor: `rgba(32,153,145,0.25)` }}>
-                  <p className="text-[10px] mb-1 font-medium" style={{ color: B.muted }}>Gate Velocity</p>
-                  <p className="text-xl font-bold font-mono" style={{ color: B.teal }}>35+</p>
-                  <p className="text-[10px] mt-0.5" style={{ color: B.mutedLight }}>scans/min · offline</p>
+
+                {/* Main content */}
+                <div className="flex flex-col flex-1 overflow-hidden">
+                  {/* Top bar */}
+                  <div className="flex items-center justify-between px-3 py-1.5 border-b" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5}><path d="M15 18l-6-6 6-6" strokeLinecap="round"/></svg>
+                      <span className="text-[7px] font-medium" style={{ color: B.teal }}>Back Venue List</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke={B.muted} strokeWidth={2}><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center text-[6px] font-bold text-white" style={{ backgroundColor: B.teal }}>YB</div>
+                    </div>
+                  </div>
+
+                  {/* Venue Details title + info cards */}
+                  <div className="px-3 py-2 border-b" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                    <p className="text-[9px] font-bold mb-2" style={{ color: B.text }}>Venue Details</p>
+                    <div className="grid grid-cols-4 gap-1.5">
+                      {[
+                        { label: "BASIC INFO", color: B.teal, lines: ["Week 26 · COLUMBUS","Evinra Show Prods.","Lackeland Ice Arena"] },
+                        { label: "CONTACT",   color: B.teal, lines: ["Flores, Juanita","(207) 555-0119","debbie@example.com"] },
+                        { label: "PLAY DATE", color: B.teal, lines: ["Mon, Oct 06, 2024","01:06 AM / 03:44 AM"] },
+                        { label: "COST",      color: B.teal, lines: ["Rent: $27,949.00","Paid: $65,749.00"] },
+                      ].map(({ label, color, lines }) => (
+                        <div key={label} className="rounded border p-1.5" style={{ borderColor: "#E2E8F0", backgroundColor: "#F8FAFC" }}>
+                          <p className="text-[5.5px] font-bold uppercase tracking-widest mb-1" style={{ color }}>{label}</p>
+                          {lines.map(l => <p key={l} className="text-[6px] leading-tight" style={{ color: B.muted }}>{l}</p>)}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tabs */}
+                  <div className="flex items-center border-b px-3 overflow-hidden" style={{ borderColor: "#E2E8F0", backgroundColor: "#fff" }}>
+                    {["Contract","Promotions","Insurance","Permits","Equipment","Expenses","Manager Notes","Taxes","Finance"].map((tab, i) => (
+                      <div key={tab} className="px-1.5 py-1 text-[6px] font-medium shrink-0 border-b-[1.5px]"
+                        style={{ borderColor: i === 8 ? B.teal : "transparent", color: i === 8 ? B.teal : B.muted }}>
+                        {tab}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Finance table */}
+                  <div className="flex-1 overflow-hidden px-3 py-1.5" style={{ backgroundColor: "#F8FAFC" }}>
+                    {/* Table header */}
+                    <div className="grid text-[5.5px] font-bold uppercase tracking-wide pb-1 border-b"
+                      style={{ gridTemplateColumns: "1.6fr 0.9fr 0.9fr 0.9fr 0.7fr 1fr 1fr", borderColor: "#E2E8F0", color: B.muted }}>
+                      <div/>
+                      <div>Gross Sales</div><div>Commission</div><div>Net Sales</div>
+                      <div>Per Cap.</div><div>Online/C.Card</div><div>Cash on Hand</div>
+                    </div>
+                    {[
+                      { cat:"BOX OFFICE", g:"$710.68", c:"$351.02", n:"$473.85", p:"$710.68", o:"$446.61", ch:"$450.54" },
+                      { cat:"MIDWAY",     g:"$630.44", c:"$328.85", n:"$106.58", p:"$630.44", o:"$105.55", ch:"$475.22" },
+                      { cat:"CONCESSION", g:"$854.08", c:"$219.78", n:"$779.58", p:"$854.08", o:"$490.51", ch:"$202.87" },
+                      { cat:"NOVELTIES",  g:"$782.01", c:"$739.65", n:"$943.65", p:"$782.01", o:"$293.01", ch:"$928.41" },
+                      { cat:"PARKING",    g:"$948.55", c:"$589.99", n:"$576.28", p:"$948.55", o:"$396.84", ch:"$275.43" },
+                      { cat:"OTHERS",     g:"$948.55", c:"$589.99", n:"$576.28", p:"$948.55", o:"$396.84", ch:"$275.43" },
+                    ].map((row, i) => (
+                      <div key={row.cat} className="grid text-[6px] py-[3px] border-b"
+                        style={{ gridTemplateColumns: "1.6fr 0.9fr 0.9fr 0.9fr 0.7fr 1fr 1fr", borderColor: "#F1F5F9", backgroundColor: i % 2 === 0 ? "#fff" : "transparent" }}>
+                        <div className="font-semibold" style={{ color: B.teal }}>{row.cat}</div>
+                        {[row.g,row.c,row.n,row.p,row.o,row.ch].map((v,j) => <div key={j} style={{ color: B.text }}>{v}</div>)}
+                      </div>
+                    ))}
+                    {/* Total */}
+                    <div className="grid text-[6px] py-[3px] font-bold border-b-2" style={{ gridTemplateColumns: "1.6fr 0.9fr 0.9fr 0.9fr 0.7fr 1fr 1fr", borderColor: B.teal }}>
+                      <div style={{ color: B.text }}>TOTAL</div>
+                      {["$406.27","$169.43","$601.13","$406.27","$767.50","$778.35"].map((v,i) => <div key={i} style={{ color: B.teal }}>{v}</div>)}
+                    </div>
+                    {/* Summary row */}
+                    <div className="flex gap-3 mt-1.5">
+                      <div className="flex-1 space-y-[2px]">
+                        {[["EXPENSES","$300.13"],["SALES TAXES","$300.13"],["NET INCOME","$301.00"]].map(([k,v]) => (
+                          <div key={k} className="flex justify-between text-[6px]">
+                            <span style={{ color: B.muted }}>{k}</span>
+                            <span className="font-bold" style={{ color: B.teal }}>{v}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex-1 space-y-[2px]">
+                        {[["TOTAL EXPENSES","$300.13"],["CASH AVAILABLE","$0.00"],["CASH ENDING BALANCE","$0.00"]].map(([k,v]) => (
+                          <div key={k} className="flex justify-between text-[6px]">
+                            <span style={{ color: B.muted }}>{k}</span>
+                            <span className="font-bold" style={{ color: B.teal }}>{v}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Save bar */}
+                  <div className="flex items-center gap-2 px-3 py-2 border-t" style={{ borderColor: "#E2E8F0", backgroundColor: B.navyDarkest }}>
+                    <button className="px-2.5 py-1 rounded text-[6.5px] font-semibold border" style={{ borderColor: "rgba(255,255,255,0.2)", color: "#fff" }}>Save</button>
+                    <button className="px-2.5 py-1 rounded text-[6.5px] font-semibold text-white" style={{ backgroundColor: B.teal }}>Close Finance</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Floating card: vendor settlement */}
-          <div className="absolute -bottom-5 -right-5 rounded-xl p-3.5 border shadow-xl"
-            style={{ backgroundColor: B.navyDarkest, borderColor: `rgba(32,153,145,0.35)`, boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}>
+          {/* Floating card: auto-settled */}
+          <div className="absolute -bottom-4 -right-6 rounded-xl p-3 border shadow-2xl"
+            style={{ backgroundColor: B.navyDarkest, borderColor: `rgba(32,153,145,0.35)`, boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "rgba(32,153,145,0.15)" }}>
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5}><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
               <div>
-                <p className="text-[11px] font-semibold text-white">3 vendors auto-settled</p>
-                <p className="text-[10px]" style={{ color: B.muted }}>$6,140 in commissions calculated</p>
+                <p className="text-[11px] font-semibold text-white">Books closed in 4 hrs</p>
+                <p className="text-[10px]" style={{ color: B.muted }}>$19,750 · Southeast Fair · Day 3</p>
               </div>
             </div>
           </div>
 
           {/* Floating card: offline badge */}
-          <div className="absolute -top-5 -left-5 rounded-xl px-3 py-2 border shadow-xl"
-            style={{ backgroundColor: B.navyDarkest, borderColor: `${B.navy}70`, boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}>
+          <div className="absolute -top-4 -left-6 rounded-xl px-3 py-2 border shadow-2xl"
+            style={{ backgroundColor: B.navyDarkest, borderColor: `${B.navy}70`, boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}>
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: B.teal }}/>
               <span className="text-[11px] font-semibold text-white">100% Offline Mode</span>
@@ -344,7 +446,7 @@ function Hero() {
           </div>
         </div>
         <div aria-hidden className="absolute inset-0"
-          style={{ background: `linear-gradient(to right, ${B.navyDarkest} 0%, transparent 45%)` }}/>
+          style={{ background: `linear-gradient(to right, ${B.navyDarkest} 0%, transparent 42%)` }}/>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
@@ -427,17 +529,17 @@ const PAIN_POINTS = [
   {
     Icon: IconDollar,
     title: "The 'Standard Fee' Trap",
-    body: "Traditional ticketing platforms charge 5–15% of every ticket sold. They built their business model on taking a cut of yours. Every seat you fill, every gate you open, they collect — on top of your marketing budget, production costs, and crew.",
+    body: "A 5-15% ticketing fee might seem like the standard cost of doing business... until you do the math on a sold-out weekend. Stop bleeding your profit margins just for the privilege of selling a ticket. Traditional apps take a cut of your hard-earned crowd while slapping their own logo on your checkout.",
   },
   {
     Icon: IconWifiOff,
     title: "Failing Gate WiFi",
-    body: "Rural fairgrounds weren't built for 5,000 smartphones and cloud-dependent apps. The moment the local cell tower overloads, your scanners freeze, your lines stop moving, and your revenue stops flowing. The vendor blames the internet.",
+    body: "There is nothing worse than a dropped connection with 500 angry people waiting in line. Cloud-dependent ticketing apps routinely crumble in rural fairgrounds and packed festival fields. When your gates rely strictly on a fragile internet signal, your ticket revenue stops the second it goes down.",
   },
   {
     Icon: IconPuzzle,
     title: "The Software Frankenstein",
-    body: "Ticketing in one app. Vendors tracked in a spreadsheet. Cash boxes reconciled in a separate tool. You spend event day praying these integrations hold, instead of running your show.",
+    body: "You shouldn't have to export Excel sheets from your ticketing app just to calculate vendor payouts in a completely different system. Taping together mismatched software and third-party hardware creates massive blind spots, lost cash, and major reconciliation headaches at the end of the night.",
   },
 ];
 
@@ -655,12 +757,12 @@ function Solution() {
           <div>
             <h3 className="text-2xl font-bold mb-4" style={{ color: B.text }}>White-Label Ticketing That Protects Your Margins</h3>
             <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>
-              Every ticket sold on a third-party platform is a customer you don't own. Evinra flips this — your checkout lives on your domain, carries your brand, and builds your audience.
+              Stop acting as a lead generator for third-party ticketing apps. Evinra gives you a fully branded, white-label checkout experience that lives directly on your domain. You keep control of your customer data, you control the branding, and most importantly, you keep the revenue that used to bleed out to convenience fees.
             </p>
             <ul className="space-y-3 mb-7">
-              <CheckItem>Custom checkout flows on your domain</CheckItem>
-              <CheckItem>Instant payouts, no payout holds</CheckItem>
-              <CheckItem>Complete ownership of attendee data</CheckItem>
+              <CheckItem>Custom checkout flows (General admission, VIP, seated)</CheckItem>
+              <CheckItem>Instant payouts directly to your merchant account</CheckItem>
+              <CheckItem>Complete ownership of your attendee data</CheckItem>
             </ul>
             <a href="/features/white-label-ticketing"
               className="inline-flex items-center gap-1 text-sm font-semibold cursor-pointer"
@@ -676,12 +778,12 @@ function Solution() {
           <div className="order-1 lg:order-2">
             <h3 className="text-2xl font-bold mb-4" style={{ color: B.text }}>Native Offline POS Built for the Field</h3>
             <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>
-              Standard POS apps were designed for coffee shops, not muddy fields with 10,000 attendees and zero cell signal. Evinra runs entirely on local device caching. The internet can go down. Your gates keep moving.
+              Never lose a sale to a dead router again. Evinra's POS is natively built to function fully offline. Your staff can keep scanning tickets and processing cash sales at lightning speed, even in a muddy field with zero cell service. The moment a signal returns, the entire system syncs automatically across all your gates.
             </p>
             <ul className="space-y-3 mb-7">
-              <CheckItem>Continuous scanning without WiFi</CheckItem>
-              <CheckItem>Sub-second processing speeds</CheckItem>
-              <CheckItem>Compatible with rugged hardware</CheckItem>
+              <CheckItem>Continuous ticket scanning without WiFi</CheckItem>
+              <CheckItem>Sub-second processing speeds to kill gate bottlenecks</CheckItem>
+              <CheckItem>Compatible with rugged, field-tested hardware</CheckItem>
             </ul>
             <a href="/features/offline-event-pos"
               className="inline-flex items-center gap-1 text-sm font-semibold cursor-pointer"
@@ -697,10 +799,10 @@ function Solution() {
 
 /* ─── SECTION 5: LIFECYCLE ─── */
 const MODULES = [
-  { Icon: IconGate,  title: "Multi-Gate Synchronization",   body: "All gates share a closed-loop local network. A ticket scanned at Gate 1 is instantly invalidated at Gates 2–10, even with zero internet." },
-  { Icon: IconCash,  title: "Multi-Vendor Cash Management", body: "Digitize vendor contracts, track real-time sales per booth, and auto-calculate commission splits the moment gates close." },
-  { Icon: IconUsers, title: "Granular Team Permissions",    body: "Give each staff member exactly the access they need. Gate staff scan. Admins see everything." },
-  { Icon: IconChart, title: "Unified Financial Reporting",  body: "One dashboard: ticketing revenue, POS sales, vendor commissions, cash reconciliation. Close your books in minutes." },
+  { Icon: IconGate,  title: "Multi-Gate Synchronization",   body: "Running a massive fairground? Keep your data accurate across miles of fencing. Evinra syncs check-ins, VIP upgrades, and capacity counts across dozens of gates simultaneously." },
+  { Icon: IconCash,  title: "Multi-Vendor Cash Management", body: "Eliminate the end-of-night Excel nightmare. Track exactly which vendor sold what, reconcile cash boxes instantly, and calculate revenue splits without the guesswork." },
+  { Icon: IconUsers, title: "Granular Team Permissions",    body: "Touring with a massive crew and seasonal volunteers? Assign strict, role-based access to your POS devices so your staff can only see and do exactly what you authorize." },
+  { Icon: IconChart, title: "Unified Financial Reporting",  body: "See your entire event's health from a single dashboard. Track live gate velocity, total revenue, and vendor performance before the gates even close." },
 ];
 
 function ModuleCard({ Icon, title, body, delay, inView, direction }) {
