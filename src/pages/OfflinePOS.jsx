@@ -101,11 +101,11 @@ function Hero() {
             Offline Event POS
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.07] tracking-tight mb-6">
-            Your Gates Keep Moving.<br/>
-            <span style={{ color: B.teal }}>Even With Zero Bars.</span>
+            Keep the Gates Moving.<br/>
+            <span style={{ color: B.teal }}>The Offline Event POS That Never Drops.</span>
           </h1>
           <p className="text-[15px] leading-relaxed mb-8" style={{ color: B.mutedLight }}>
-            Stop blaming the internet when the lines stop moving. Evinra's native offline POS is engineered to process walk-up sales, scan tickets, and sync data seamlessly with zero bars of service.
+            Stop letting rural cell towers and fragile WiFi dictate your revenue. Evinra is a native offline point-of-sale and ticket scanning system built to process high-volume cash and digital sales in the mud, in the dark, and completely off the grid.
           </p>
           <div className="flex flex-wrap gap-3 mb-5">
             <TealBtn href="/request-a-demo">Request a Demo <IconArrowRight className="w-4 h-4"/></TealBtn>
@@ -213,52 +213,68 @@ function MockupWalkUpSale() {
   );
 }
 
-function WalkUpSales() {
+function CloudVsOffline() {
   const [ref, inView] = useInView();
   return (
     <section ref={ref} className="border-b" style={{ backgroundColor: B.bg, borderColor: "#E2E8F0" }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className={`transition-all duration-500 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: B.text }}>Process Walk-Up Sales Without the Bottleneck.</h2>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: B.muted }}>
-              Selling tickets online is easy. Processing high-volume cash and card sales in a muddy field is where standard apps fail.
+        <div className="max-w-xl mb-10">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: B.text }}>The "Spinning Wheel of Death" is Costing You Walk-Up Sales.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>
+            When 5,000 attendees show up and immediately overload the local cell tower, how does your ticketing app handle the crash?
+          </p>
+        </div>
+        <div className="grid lg:grid-cols-2 gap-6">
+          <div className={`rounded-xl p-7 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#EF4444" }}>Standard "Cloud-First" Ticketing Apps</p>
+            <p className="text-sm leading-relaxed" style={{ color: B.muted }}>
+              Every scan, every sale, and every cash transaction requires a live connection back to their servers. When the tower overloads — and it always overloads — the spinning wheel appears, the gate agent freezes, and the line starts backing up. The vendor blames the internet. You lose the walk-up revenue.
             </p>
-            <div className="grid gap-5">
-              <div className="rounded-xl p-5 border" style={{ backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
-                <h4 className="text-sm font-semibold mb-2" style={{ color: B.text }}>The TicketSocket Runaround</h4>
-                <p className="text-xs leading-relaxed" style={{ color: B.muted }}>TicketSocket is an incredible engine for selling tickets online. But when it comes to the physical reality of your gates—managing cash tills, walk-up sales, and rapid-fire entry—their offline capabilities are limited. They are a ticketing app trying to survive in a physical environment.</p>
-              </div>
-              <div className="rounded-xl p-5 border" style={{ backgroundColor: "#fff", borderColor: `${B.teal}30` }}>
-                <div className="w-1 h-5 rounded mb-3" style={{ backgroundColor: B.teal }}/>
-                <h4 className="text-sm font-semibold mb-2" style={{ color: B.text }}>Evinra's Operational DNA</h4>
-                <p className="text-xs leading-relaxed" style={{ color: B.muted }}>Evinra was built operational-first. Our native point-of-sale is engineered specifically for the field. It seamlessly handles both your digital tickets and your physical cash drawers on the same rugged device, keeping your lines moving at a rapid 35+ scans per minute.</p>
-              </div>
-            </div>
           </div>
-          <div className={`transition-all duration-500 delay-100 ${inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"}`}>
-            <MockupWalkUpSale />
+          <div className={`rounded-xl p-7 border transition-all duration-500 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`} style={{ backgroundColor: "rgba(32,153,145,0.03)", borderColor: `${B.teal}30` }}>
+            <div className="w-1 h-5 rounded mb-4" style={{ backgroundColor: B.teal }}/>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: B.teal }}>Evinra's Native Offline Ecosystem</p>
+            <p className="text-sm leading-relaxed" style={{ color: B.muted }}>
+              Evinra doesn't ask for permission from a remote server. Every ticket scan and cash sale runs locally on the device at sub-second speed. The cloud connection is a background sync channel, not a requirement. No connection, no problem. No bars, no stalls.
+            </p>
           </div>
+        </div>
+        <div className="mt-8">
+          <MockupWalkUpSale />
         </div>
       </div>
     </section>
   );
 }
 
-function FeatureGrid() {
+function SpeedSection() {
   const [ref, inView] = useInView();
+  const cards = [
+    {
+      title: "Sub-Second Gate Velocity",
+      body: "Your gate devices process each ticket scan in under one second, locally on-device, with no cloud round-trip required. Lines don't stall. Revenue doesn't stop.",
+    },
+    {
+      title: "Seamless Multi-Gate Syncing",
+      body: "Your devices share a closed local network. A ticket scanned at Gate 1 is invalidated at Gates 2 through 10 in real time — zero cloud dependency, zero fraud.",
+    },
+    {
+      title: "The Silent Cloud Catch-Up",
+      body: "The moment any device picks up a signal — even a single bar — Evinra silently syncs all cached transactions to the cloud. Nothing is ever lost. Nothing is ever manually uploaded.",
+    },
+  ];
   return (
     <section ref={ref} style={{ backgroundColor: B.navyDarkest }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-xl mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Everything the Field Demands.</h2>
-          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Built for outdoor operators, not office managers.</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Built for Speed, Not Just Survival.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Three architectural decisions that keep your gates moving when every other system stops.</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FEATURES.map(({ title, body }, i) => (
+        <div className="grid md:grid-cols-3 gap-5">
+          {cards.map(({ title, body }, i) => (
             <div key={title}
               className={`rounded-xl p-6 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-              style={{ backgroundColor: B.navyDeep, borderColor: `${B.navy}60`, transitionDelay: `${i * 70}ms` }}>
+              style={{ backgroundColor: B.navyDeep, borderColor: `${B.navy}60`, transitionDelay: `${i * 80}ms` }}>
               <div className="w-1 h-5 rounded mb-4" style={{ backgroundColor: B.teal }}/>
               <h4 className="text-sm font-semibold text-white mb-2">{title}</h4>
               <p className="text-xs leading-relaxed" style={{ color: B.muted }}>{body}</p>
@@ -276,8 +292,8 @@ function HardwareSection() {
     <section id="hardware" ref={ref} className="border-b" style={{ backgroundColor: B.bg, borderColor: "#E2E8F0" }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-xl mb-12">
-          <h2 className="text-3xl font-bold mb-4" style={{ color: B.text }}>Field-Tested & Approved.</h2>
-          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>We push gear to the absolute limit to guarantee our 35+ scans-per-minute benchmark. Here is the hardware we actively test, trust, and deploy in the mud.</p>
+          <h2 className="text-3xl font-bold mb-4" style={{ color: B.text }}>Plug-and-Play. No Proprietary Lock-Ins.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Run Evinra on the consumer and enterprise hardware you already trust. No proprietary lock-in, no mandatory hardware bundle.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {HARDWARE.map(({ category, items }, i) => (
@@ -305,6 +321,45 @@ function HardwareSection() {
   );
 }
 
+function LifecycleSection() {
+  const [ref, inView] = useInView();
+  const items = [
+    {
+      title: "Instant Vendor Reconciliation",
+      body: "Every food truck, merch booth, and bar tab is tracked against each vendor's commission rate in real time. Settlement books close automatically — no Monday morning spreadsheet.",
+    },
+    {
+      title: "Granular Staff Tracking",
+      body: "Assign strict role-based access to every device. Gate staff scan. Supervisors see real-time velocity. Admins access financial reporting. Nobody sees what they shouldn't.",
+    },
+    {
+      title: "Live Financial Dashboards",
+      body: "Track gate velocity, total revenue, vendor performance, and cash-box status from a single live dashboard — before your event even closes.",
+    },
+  ];
+  return (
+    <section ref={ref} style={{ backgroundColor: B.navyDeep }}>
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="max-w-xl mb-12">
+          <h2 className="text-3xl font-bold text-white mb-4">The POS is Just the Beginning of the Ecosystem.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.mutedLight }}>Every scan feeds a connected operational layer that runs your entire event — not just the gate.</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {items.map(({ title, body }, i) => (
+            <div key={title}
+              className={`rounded-xl p-6 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+              style={{ backgroundColor: B.navyDarkest, borderColor: `${B.navy}60`, transitionDelay: `${i * 80}ms` }}>
+              <div className="w-1 h-5 rounded mb-4" style={{ backgroundColor: B.teal }}/>
+              <h4 className="text-sm font-semibold text-white mb-2">{title}</h4>
+              <p className="text-xs leading-relaxed" style={{ color: B.muted }}>{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function OfflinePOS() {
   return (
     <div>
@@ -312,12 +367,13 @@ export default function OfflinePOS() {
       <main>
         <Hero/>
         <SurviveField/>
-        <WalkUpSales/>
-        <FeatureGrid/>
+        <CloudVsOffline/>
+        <SpeedSection/>
         <HardwareSection/>
+        <LifecycleSection/>
         <DemoFormSection
-          title="Ready to Take Your Gates Back?"
-          subtitle="Schedule a custom technical walkthrough. We'll look at your current hardware, identify your bottlenecks, and show you exactly how Evinra handles the heavy lifting. No sales talk, just a look under the hood."
+          title="Stop Losing Revenue to Dead Routers."
+          subtitle="Your competitors are already automating their gates and dropping their ticketing fees. Ready to see the difference?"
           btnLabel="Speak to a Field Technician →"
         />
       </main>

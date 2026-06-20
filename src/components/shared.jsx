@@ -76,9 +76,8 @@ const NAV_ITEMS = [
     { label: "Independent Promoters", href: "#" },
   ]},
   { label: "Why Evinra", items: [
-    { label: "Our Story",              href: "/our-story" },
-    { label: "Field Results",          href: "/field-results" },
-    { label: "Vs. TicketSocket",       href: "/compare/ticketsocket-alternative" },
+    { label: "Our Story",     href: "/our-story" },
+    { label: "Field Results", href: "/field-results" },
   ]},
 ];
 
@@ -170,11 +169,15 @@ export function Navbar() {
 /* ─── FOOTER ─── */
 const FOOTER_COLS = [
   { title: "Core Software", links: [
-    { label: "White Label Ticketing",         href: "/features/white-label-ticketing" },
-    { label: "Offline Event POS",             href: "/features/offline-event-pos" },
-    { label: "Event Check-In Software",       href: "/features/multi-gate-check-in" },
-    { label: "Multi-Vendor Cash Management",  href: "/features/multi-vendor-cash-management" },
-    { label: "Hardware & Equipment",          href: "/hardware-requirements" },
+    { label: "White Label Ticketing Platform",    href: "/features/white-label-ticketing" },
+    { label: "Offline Event POS System",          href: "/features/offline-event-pos" },
+    { label: "Event Check-In Software",           href: "/features/multi-gate-check-in" },
+    { label: "Ticketing Software Comparison",     href: "/compare/ticketsocket-alternative" },
+    { label: "Online Event Management",           href: "#" },
+    { label: "Box Office Software & Hardware",    href: "/hardware-requirements" },
+    { label: "Ticketing Solutions for Venues",    href: "#" },
+    { label: "Multi-Vendor Cash Reconciliation",  href: "/features/multi-vendor-cash-management" },
+    { label: "Unified Financial Reporting",       href: "/features/unified-financial-reporting" },
   ]},
   { title: "For Event Operators", links: [
     { label: "Fairs & Festivals",     href: "/fairs-and-festivals" },
@@ -188,11 +191,13 @@ const FOOTER_COLS = [
     { label: "Evinra vs. Etix",         href: "#" },
     { label: "Evinra vs. Eventbrite",   href: "#" },
   ]},
-  { title: "Company", links: [
-    { label: "Our Story",      href: "/our-story" },
-    { label: "Field Results",  href: "/field-results" },
-    { label: "Request a Demo", href: "/request-a-demo" },
-    { label: "Contact Us",     href: "/contact" },
+  { title: "Resources & Company", links: [
+    { label: "Our Story",              href: "/our-story" },
+    { label: "The Event Operator's Hub", href: "#" },
+    { label: "Profit Margin Calculator", href: "#" },
+    { label: "Founding Partner Program", href: "#" },
+    { label: "Request a Demo",         href: "/request-a-demo" },
+    { label: "Contact Us",             href: "/contact" },
   ]},
 ];
 
@@ -250,7 +255,7 @@ export function Footer() {
 }
 
 /* ─── SHARED: Demo Form Section ─── */
-export function DemoFormSection({ title = "Ready to Take Your Gates Back?", subtitle = "Schedule a custom technical walkthrough. We'll look at your current hardware, identify your bottlenecks, and show you exactly how Evinra handles the heavy lifting. No sales talk, just a look under the hood.", btnLabel = "Get My Walkthrough →" }) {
+export function DemoFormSection({ title = "Ready to Take Your Gates Back?", subtitle = "Schedule a custom technical walkthrough. We'll look at your current hardware, identify your bottlenecks, and show you exactly how Evinra handles the heavy lifting. No sales talk, just a look under the hood.", btnLabel = "Get My Walkthrough →", formTitle = "Request a Demo" }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", bottleneck: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -264,7 +269,7 @@ export function DemoFormSection({ title = "Ready to Take Your Gates Back?", subt
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="rounded-xl p-8 border" style={{ backgroundColor: B.navyDeep, borderColor: `${B.navy}60`, boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)" }}>
-            <h4 className="text-base font-semibold text-white mb-1">Request a Demo</h4>
+            <h4 className="text-base font-semibold text-white mb-1">{formTitle}</h4>
             <p className="text-xs mb-6" style={{ color: B.muted }}>{subtitle}</p>
             {submitted ? (
               <div className="text-center py-10">

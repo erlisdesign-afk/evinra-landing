@@ -141,13 +141,13 @@ function WalkUpSection() {
     <section ref={ref} className="border-b" style={{ backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-xl mb-12">
-          <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>Process Walk-Up Sales Without the Bottleneck.</h2>
-          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Selling tickets online is easy. Processing high-volume cash and card sales in a muddy field is where standard apps fail.</p>
+          <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>Basic Offline Caching vs. A True Local Network.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Not all offline modes are created equal. There is a fundamental difference between a scanner that caches a ticket list and a platform that runs a real, closed-loop local network across your entire footprint.</p>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {[
-            { label: "The TicketSocket Runaround", accent: false, body: "TicketSocket is an incredible engine for selling tickets online. But when it comes to the physical reality of your gates—managing cash tills, walk-up sales, and rapid-fire entry—their offline capabilities are limited. They are a ticketing app trying to survive in a physical environment." },
-            { label: "Evinra's Operational DNA", accent: true, body: "Evinra was built operational-first. Our native point-of-sale is engineered specifically for the field. It seamlessly handles both your digital tickets and your physical cash drawers on the same rugged device, keeping your lines moving at a rapid 35+ scans per minute." },
+            { label: "The TicketSocket Offline Mode", accent: false, body: "TicketSocket's offline functionality works by downloading a snapshot of your ticket list to each individual device. Each gate operates in isolation. If two people try to use the same screenshot ticket at two different gates simultaneously, neither gate knows the other exists — the duplicate walks right in." },
+            { label: "Evinra's Closed-Loop Local Network", accent: true, body: "Evinra creates an on-site peer-to-peer network between all your devices using your local WiFi or a mobile hotspot. When Gate A scans a ticket, that invalidation is broadcast across the entire local network in milliseconds. Gate B rejects the duplicate before the fraudster even reaches the scanner." },
           ].map(({ label, accent, body }, i) => (
             <div key={label}
               className={`rounded-xl p-7 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
@@ -169,13 +169,13 @@ function EcosystemSection() {
     <section ref={ref} style={{ backgroundColor: B.navyDarkest }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-xl mb-12">
-          <h2 className="text-3xl font-bold text-white mb-3">Don't Tape Together Three Separate Apps to Run Your Show.</h2>
-          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Selling the ticket is only 10% of the job. Evinra manages the entire physical production lifecycle natively.</p>
+          <h2 className="text-3xl font-bold text-white mb-3">A Ticketing Platform vs. A Complete Production Ecosystem.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>Selling the ticket is only the first step. Who handles the physical gates, the cash vendors, the hardware inventory, and the post-event reconciliation?</p>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {[
-            { label: "The TicketSocket Setup", accent: false, body: "Once your attendee buys a ticket, TicketSocket's job is mostly done. To track physical hardware inventory, manage granular staff permissions on-site, handle multi-vendor cash boxes, and calculate food truck commissions, you have to export CSV files and connect disparate third-party apps." },
-            { label: "Evinra's Native Ecosystem", accent: true, body: "Evinra is a complete production ecosystem. The exact same software that scanned the ticket at the front gate also tracks your vendor sales and automatically calculates your commission splits in real-time, tracks physical scanner inventory, and populates live financial reporting. Close your physical cash boxes and digital books in minutes, not days." },
+            { label: "The TicketSocket Handoff", accent: false, body: "TicketSocket is an excellent tool for the online presale window. But the moment your attendee walks up to a physical gate, you're on your own. Vendor cash management, hardware tracking, multi-gate fraud sync, and post-event settlement all require separate third-party tools — and separate monthly invoices." },
+            { label: "Evinra's End-to-End Platform", accent: true, body: "Evinra runs the entire production lifecycle on one platform. The software that sold the ticket online is the same software scanning the gate, managing the food truck POS, tracking your hardware inventory, and generating your post-event settlement report. One vendor. One login. One source of truth for your entire operation." },
           ].map(({ label, accent, body }, i) => (
             <div key={label}
               className={`rounded-xl p-7 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
@@ -191,42 +191,33 @@ function EcosystemSection() {
   );
 }
 
-function TrapVsAdvantage() {
+function RevenueTraps() {
   const [ref, inView] = useInView();
-  const rows = [
-    ["You pay ticketing fees on every ticket", "You keep 100% of convenience fees"],
-    ["Cloud-dependent scanning fails in dead zones", "Device-cached scanning works with zero bars"],
-    ["Walk-up sales require a separate third-party app", "Native POS handles cash, card, and digital in one screen"],
-    ["Vendor settlements require CSV exports", "Automated commission splits close in real time"],
-    ["Multi-year contracts lock you in", "Zero lock-in option — month to month"],
-    ["Customer data belongs to the platform", "You own every attendee record"],
+  const items = [
+    { h: "Zero Percentage Cuts on Your Ticket Revenue", body: "Evinra charges a flat, transparent software rate — not a percentage of every ticket you sell. As your event grows and you sell more tickets, your software cost stays the same." },
+    { h: "You Set the Convenience Fee. You Keep It.", body: "If you charge a $3 convenience fee per ticket, that $3 goes straight to your bank account. We don't take a cut of fees you created to cover your own operational costs." },
+    { h: "No Multi-Year Lock-In Contracts", body: "We offer a zero lock-in option. Evinra earns your business every season by building better software, not by trapping you in a contract with painful exit clauses." },
+    { h: "Your Attendee Data is Yours. Always.", body: "We don't resell your attendee lists. We don't market competing events to your ticket buyers. Your audience is your most valuable asset — it stays in your hands." },
   ];
   return (
     <section ref={ref} className="border-b" style={{ backgroundColor: B.bg, borderColor: "#E2E8F0" }}>
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border" style={{ borderColor: "#E2E8F0" }}>
-          <div className="p-6 border-r" style={{ backgroundColor: "#fff", borderColor: "#E2E8F0" }}>
-            <h3 className="text-base font-bold mb-5" style={{ color: B.text }}>The TicketSocket Trap</h3>
-            <ul className="space-y-3">
-              {rows.map(([trap]) => (
-                <li key={trap} className="flex items-start gap-3 text-sm" style={{ color: "#EF4444" }}>
-                  <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path d="M18 6 6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <span style={{ color: B.muted }}>{trap}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="p-6" style={{ backgroundColor: "rgba(32,153,145,0.03)" }}>
-            <h3 className="text-base font-bold mb-5" style={{ color: B.teal }}>The Evinra Advantage</h3>
-            <ul className="space-y-3">
-              {rows.map(([, adv]) => (
-                <li key={adv} className="flex items-start gap-3 text-sm">
-                  <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} style={{ color: B.teal }}><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <span style={{ color: B.navy }}>{adv}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="max-w-xl mb-12">
+          <h2 className="text-3xl font-bold mb-3" style={{ color: B.text }}>Keep More of Your Revenue with Zero Contract Traps.</h2>
+          <p className="text-sm leading-relaxed" style={{ color: B.muted }}>The real cost of a ticketing platform isn't the monthly fee — it's the percentage points quietly bled on every transaction, every season, for years.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {items.map(({ h, body }, i) => (
+            <div key={h}
+              className={`rounded-xl p-7 border transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+              style={{ backgroundColor: "#fff", borderColor: "#E2E8F0", transitionDelay: `${i * 80}ms` }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: `rgba(32,153,145,0.1)` }}>
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke={B.teal} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <h3 className="text-base font-semibold mb-2" style={{ color: B.text }}>{h}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: B.muted }}>{body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -242,8 +233,13 @@ export default function VsTicketSocket() {
         <ComparisonTable/>
         <WalkUpSection/>
         <EcosystemSection/>
-        <TrapVsAdvantage/>
-        <DemoFormSection title="Ready to Make the Switch?" subtitle="Schedule a technical walkthrough. We'll map your current TicketSocket setup to Evinra and show you exactly what changes — and what improves." btnLabel="See the Side-by-Side →"/>
+        <RevenueTraps/>
+        <DemoFormSection
+          title="Ready to Upgrade to a Truly Rugged Box Office?"
+          subtitle="See the offline network architecture, check the gate hardware, and get your questions answered. No sales talk, just a walkthrough."
+          btnLabel="See Evinra in Action →"
+          formTitle="See Evinra in Action"
+        />
       </main>
       <Footer/>
     </div>
