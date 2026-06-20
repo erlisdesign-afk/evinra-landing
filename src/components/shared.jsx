@@ -67,6 +67,7 @@ const NAV_ITEMS = [
     { label: "Offline Event POS",            href: "/features/offline-event-pos" },
     { label: "Multi-Vendor Cash Management", href: "/features/multi-vendor-cash-management" },
     { label: "Multi-Gate Check-In",          href: "/features/multi-gate-check-in" },
+    { label: "Unified Financial Reporting",  href: "/features/unified-financial-reporting" },
     { label: "Hardware & Equipment",         href: "/hardware-requirements" },
   ]},
   { label: "For Event Operators", items: [
