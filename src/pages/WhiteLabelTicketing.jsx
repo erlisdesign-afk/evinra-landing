@@ -5,23 +5,25 @@ function Hero() {
   return (
     <section className="relative pt-28 pb-20" style={{ backgroundColor: B.navyDarkest }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 55% 45% at 70% 55%, ${B.navyDeep} 0%, transparent 70%)` }}/>
-      <div className="relative max-w-7xl mx-auto px-6 max-w-2xl">
-        <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6 border text-xs font-medium" style={{ backgroundColor: "rgba(32,153,145,0.1)", borderColor: "rgba(32,153,145,0.25)", color: B.tealLight }}>
-          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.teal }}/>
-          White-Label Ticketing
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-6 border text-xs font-medium" style={{ backgroundColor: "rgba(32,153,145,0.1)", borderColor: "rgba(32,153,145,0.25)", color: B.tealLight }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: B.teal }}/>
+            White-Label Ticketing
+          </div>
+          <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.07] tracking-tight mb-6">
+            Your Brand on the Ticket.<br/>
+            <span style={{ color: B.teal }}>Your Money in the Bank.</span>
+          </h1>
+          <p className="text-[15px] leading-relaxed mb-8" style={{ color: B.mutedLight }}>
+            Stop renting your box office. Evinra is the custom event ticketing platform that keeps the spotlight exactly where it belongs: on your event. Reclaim your checkout, eliminate third-party branding, and take 100% ownership of your attendee data.
+          </p>
+          <div className="flex flex-wrap gap-3 mb-4">
+            <TealBtn href="/request-a-demo">Request a Demo <IconArrowRight className="w-4 h-4"/></TealBtn>
+            <GhostBtn href="#checkout">See a Custom Checkout →</GhostBtn>
+          </div>
+          <p className="text-xs" style={{ color: B.muted }}>100% White-Label. Zero Evinra branding on your gates.</p>
         </div>
-        <h1 className="text-4xl lg:text-5xl font-bold text-white leading-[1.07] tracking-tight mb-6">
-          Your Brand on the Ticket.<br/>
-          <span style={{ color: B.teal }}>Your Money in the Bank.</span>
-        </h1>
-        <p className="text-[15px] leading-relaxed mb-8 max-w-xl" style={{ color: B.mutedLight }}>
-          Stop renting your box office. Evinra is the custom event ticketing platform that keeps the spotlight exactly where it belongs: on your event. Reclaim your checkout, eliminate third-party branding, and take 100% ownership of your attendee data.
-        </p>
-        <div className="flex flex-wrap gap-3 mb-4">
-          <TealBtn href="/request-a-demo">Request a Demo <IconArrowRight className="w-4 h-4"/></TealBtn>
-          <GhostBtn href="#checkout">See a Custom Checkout →</GhostBtn>
-        </div>
-        <p className="text-xs" style={{ color: B.muted }}>100% White-Label. Zero Evinra branding on your gates.</p>
       </div>
     </section>
   );
