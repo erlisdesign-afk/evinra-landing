@@ -11,6 +11,10 @@ import FieldResults from "./pages/FieldResults";
 import Hardware from "./pages/Hardware";
 import RequestDemo from "./pages/RequestDemo";
 import Contact from "./pages/Contact";
+import FoundingOperators from "./pages/FoundingOperators";
+import Pricing from "./pages/Pricing";
+import ROICalculator from "./pages/ROICalculator";
+import Hub from "./pages/Hub";
 
 export default function App() {
   return (
@@ -28,6 +32,10 @@ export default function App() {
         <Route path="/hardware-requirements" element={<Hardware />} />
         <Route path="/request-a-demo" element={<RequestDemo />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/founding-operators" element={<FoundingOperators />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/roi-calculator" element={<ROICalculator />} />
+        <Route path="/hub" element={<Hub />} />
       </Routes>
     </BrowserRouter>
   );

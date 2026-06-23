@@ -1260,6 +1260,24 @@ function Footer() {
   );
 }
 
+/* ─── CALC BANNER ─── */
+function CalcBanner({ h2, cta, href }) {
+  return (
+    <section style={{ backgroundColor: B.navyDeep }}>
+      <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <h2 className="text-2xl font-bold text-white max-w-xl">{h2}</h2>
+        <a href={href}
+          className="shrink-0 inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-md text-white"
+          style={{ backgroundColor: B.teal, whiteSpace: "nowrap" }}
+          onMouseEnter={e => e.currentTarget.style.backgroundColor = B.tealDark}
+          onMouseLeave={e => e.currentTarget.style.backgroundColor = B.teal}>
+          {cta}
+        </a>
+      </div>
+    </section>
+  );
+}
+
 /* ─── ROOT ─── */
 export default function EvinraHomepage() {
   return (
@@ -1270,6 +1288,11 @@ export default function EvinraHomepage() {
         <Stats />
         <Enemy />
         <Solution />
+        <CalcBanner
+          h2="Stop Guessing Your Fees. Run the Numbers."
+          cta="Calculate Your ROI →"
+          href="/roi-calculator"
+        />
         <Lifecycle />
         <Differentiator />
         <FounderNote />

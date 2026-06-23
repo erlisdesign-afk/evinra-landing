@@ -137,7 +137,7 @@ export function Navbar() {
         <nav className="hidden lg:flex items-center gap-7">
           {NAV_ITEMS.map(item => <NavDropdown key={item.label} item={item}/>)}
           <a href="/pricing" className="text-sm font-medium text-slate-200 hover:text-white transition-colors duration-150">Pricing</a>
-          <a href="#" className="text-sm font-medium text-slate-200 hover:text-white transition-colors duration-150">Founding Program</a>
+          <a href="/founding-operators" className="text-sm font-medium text-slate-200 hover:text-white transition-colors duration-150">Founding Program</a>
         </nav>
         <div className="hidden lg:flex items-center gap-5">
           <a href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-150 cursor-pointer">Login</a>
@@ -173,7 +173,7 @@ const FOOTER_COLS = [
     { label: "White Label Ticketing Platform",    href: "/features/white-label-ticketing" },
     { label: "Offline Event POS System",          href: "/features/offline-event-pos" },
     { label: "Event Check-In Software",           href: "/features/multi-gate-check-in" },
-    { label: "Ticketing Software Comparison",     href: "/compare/ticketsocket-alternative" },
+    { label: "Ticketing Software Comparison",     href: "/pricing" },
     { label: "Online Event Management",           href: "#" },
     { label: "Box Office Software & Hardware",    href: "/hardware-requirements" },
     { label: "Ticketing Solutions for Venues",    href: "#" },
@@ -194,9 +194,9 @@ const FOOTER_COLS = [
   ]},
   { title: "Resources & Company", links: [
     { label: "Our Story",              href: "/our-story" },
-    { label: "The Event Operator's Hub", href: "#" },
-    { label: "Profit Margin Calculator", href: "#" },
-    { label: "Founding Partner Program", href: "#" },
+    { label: "The Event Operator's Hub", href: "/hub" },
+    { label: "Profit Margin Calculator", href: "/roi-calculator" },
+    { label: "Founding Partner Program", href: "/founding-operators" },
     { label: "Request a Demo",         href: "/request-a-demo" },
     { label: "Contact Us",             href: "/contact" },
   ]},

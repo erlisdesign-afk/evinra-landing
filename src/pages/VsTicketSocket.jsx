@@ -191,6 +191,23 @@ function EcosystemSection() {
   );
 }
 
+function CalcBanner({ h2, cta, href }) {
+  return (
+    <section style={{ backgroundColor: B.navyDeep }}>
+      <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <h2 className="text-2xl font-bold text-white max-w-xl">{h2}</h2>
+        <a href={href}
+          className="shrink-0 inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-md text-white"
+          style={{ backgroundColor: B.teal, whiteSpace: "nowrap" }}
+          onMouseEnter={e => e.currentTarget.style.backgroundColor = B.tealDark}
+          onMouseLeave={e => e.currentTarget.style.backgroundColor = B.teal}>
+          {cta}
+        </a>
+      </div>
+    </section>
+  );
+}
+
 function RevenueTraps() {
   const [ref, inView] = useInView();
   const items = [
@@ -234,6 +251,11 @@ export default function VsTicketSocket() {
         <WalkUpSection/>
         <EcosystemSection/>
         <RevenueTraps/>
+        <CalcBanner
+          h2="See the Math for Yourself."
+          cta="Run the Competitive Math →"
+          href="/roi-calculator"
+        />
         <DemoFormSection
           title="Ready to Upgrade to a Truly Rugged Box Office?"
           subtitle="See the offline network architecture, check the gate hardware, and get your questions answered. No sales talk, just a walkthrough."
